@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:sweet="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f3f3">
+
+    <FrameLayout
+        android:id="@+id/container_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        sweet:layout_constraintBottom_toBottomOf="parent"
+        sweet:layout_constraintEnd_toEndOf="parent"
+        sweet:layout_constraintStart_toStartOf="parent"
+        sweet:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:minHeight="?attr/actionBarSize"
+
+        sweet:layout_constraintEnd_toEndOf="parent"
+        sweet:layout_constraintStart_toStartOf="parent"
+        sweet:layout_constraintTop_toTopOf="parent"
+        sweet:title="@string/messhall_system"
+        sweet:titleTextColor="@color/colorPrimaryDark">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/logout"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                sweet:layout_constraintBottom_toBottomOf="parent"
+                sweet:layout_constraintEnd_toEndOf="parent"
+                sweet:layout_constraintTop_toTopOf="parent"
+                sweet:srcCompat="@drawable/exit" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:text="@string/messhall_system"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp"
+                sweet:fontFamily="@font/montserrat"
+                sweet:layout_constraintBottom_toBottomOf="parent"
+                sweet:layout_constraintStart_toStartOf="parent"
+                sweet:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

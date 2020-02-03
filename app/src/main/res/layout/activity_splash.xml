@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:sweet="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        sweet:layout_constraintBottom_toBottomOf="parent"
+        sweet:layout_constraintEnd_toEndOf="parent"
+        sweet:layout_constraintStart_toStartOf="parent"
+        sweet:layout_constraintTop_toTopOf="parent"
+        sweet:srcCompat="@drawable/bosowa" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center_horizontal"
+        android:text="@string/messhall_system"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        sweet:layout_constraintBottom_toBottomOf="parent"
+        sweet:layout_constraintEnd_toEndOf="parent"
+        sweet:layout_constraintLeft_toLeftOf="parent"
+        sweet:layout_constraintRight_toRightOf="parent"
+        sweet:layout_constraintStart_toStartOf="parent"
+        sweet:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
