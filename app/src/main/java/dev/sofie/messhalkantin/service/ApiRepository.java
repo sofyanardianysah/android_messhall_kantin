@@ -97,9 +97,9 @@ public class ApiRepository {
         return result;
     }
 
-    public void guestTransaction(String nit){
+    public void guestTransaction(String nit,String messhall){
         MesshallTransactionActivity.isLoading(true);
-        api.guestTransaction(nit).enqueue(new Callback<ApiResponse<Guest>>() {
+        api.guestTransaction(nit,messhall).enqueue(new Callback<ApiResponse<Guest>>() {
             public void onResponse(Call<ApiResponse<Guest>> call, Response<ApiResponse<Guest>> response) {
                 MesshallTransactionActivity.isLoading(false);
 
@@ -119,6 +119,42 @@ public class ApiRepository {
             }
         });
     }
+
+    public void userTransactionMesshall(String qrcode,String messhall){
+        MesshallTransactionActivity.isLoading(true);
+        api.userTransactionMesshall(qrcode,messhall).enqueue(new Callback<ApiResponse<User>>() {
+            public void onResponse(Call<ApiResponse<User>> call, Response<ApiResponse<User>> response) {
+                MesshallTransactionActivity.isLoading(false);
+
+                if (response.isSuccessful()) {
+                    if(response.body().getStatus()){
+                        if(response.body().getData() != null){
+                            MesshallTransactionActivity.nama.setText(response.body().getData().getNama());
+                            MesshallTransactionActivity.nik.setText(response.body().getData().getNik());
+                            MesshallTransactionActivity.errorTxt.setText(response.body().getMsg());
+                            MesshallTransactionActivity.successCard.setVisibility(View.GONE);
+                            MesshallTransactionActivity.errorCard.setVisibility(View.VISIBLE);
+                            MesshallTransactionActivity.cardView.setVisibility(View.VISIBLE);
+                        }else{
+                            MesshallTransactionActivity.showSuccess(response.body().getMsg());
+
+                        }
+
+                        return;
+                    }
+                    MesshallTransactionActivity.showError(response.body().getMsg());
+                    return;
+                }
+                Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+            }
+            public void onFailure(Call<ApiResponse<User>> call, Throwable t) {
+                MesshallTransactionActivity.isLoading(false);
+                Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
 
 
     // KANTIN TRANSACTION

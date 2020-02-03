@@ -3,8 +3,10 @@ package dev.sofie.messhalkantin.ui.transaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,7 +30,8 @@ public class MesshallTransactionActivity extends AppCompatActivity implements Vi
     private static ProgressBar loading;
     private IntentIntegrator qrScan;
     private ApiRepository repository;
-
+    private Spinner spinner;
+    private String messhall;
 
     private void initUI(){
         loading = findViewById(R.id.progressBar);
@@ -46,6 +49,31 @@ public class MesshallTransactionActivity extends AppCompatActivity implements Vi
         tidak = findViewById(R.id.no);
         buttonScan =  findViewById(R.id.buttonScan);
         kembaliBtn = findViewById(R.id.kembali);
+
+        spinner = findViewById(R.id.spinner);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String itemname = parent.getItemAtPosition(position).toString();
+                if (itemname.equals("Pilih Messhall")) {
+                    buttonScan.setVisibility(View.GONE);
+
+
+                } else if (itemname.equals("Mallomo")) {
+                    buttonScan.setVisibility(View.VISIBLE);
+                    messhall = itemname;
+
+                } else if (itemname.equals("SBM")) {
+                    buttonScan.setVisibility(View.VISIBLE);
+                    messhall = itemname;
+
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                buttonScan.setVisibility(View.GONE);
+            }
+        });
 
         qrScan = new IntentIntegrator(this);
         qrScan.setOrientationLocked(false);
@@ -66,9 +94,7 @@ public class MesshallTransactionActivity extends AppCompatActivity implements Vi
             return;
         }
         loading.setVisibility(View.GONE);
-        errorCard.setVisibility(View.VISIBLE);
-        successCard.setVisibility(View.VISIBLE);
-        cardView.setVisibility(View.VISIBLE);
+
     }
 
     @Override
@@ -90,8 +116,6 @@ public class MesshallTransactionActivity extends AppCompatActivity implements Vi
             }else return "User Tidak Ditemukan !" ;
     }
 
-
-
     //Getting the scan results
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -106,10 +130,10 @@ public class MesshallTransactionActivity extends AppCompatActivity implements Vi
                 switch (userType(id))
                 {
                     case USER_EMPLOYEE:
-
+                        repository.userTransactionMesshall(id,messhall);
                         break;
                     case USER_GUEST:
-
+                        repository.guestTransaction(id,messhall);
                         break;
                    default:
                        showError("Tipe User Tidak Ditemukan !");
@@ -132,6 +156,7 @@ public class MesshallTransactionActivity extends AppCompatActivity implements Vi
                 finish();
                 break;
             case R.id.submit:
+
                 break;
 
             case R.id.no:
@@ -158,7 +183,7 @@ public class MesshallTransactionActivity extends AppCompatActivity implements Vi
 
     public static void showSuccess(String message){
         errorCard.setVisibility(View.GONE);
-        errorTxt.setText(message);
+        successTxt.setText(message);
         successCard.setVisibility(View.VISIBLE);
         cardView.setVisibility(View.GONE);
     }

@@ -165,7 +165,7 @@ public class KantinTransactionActivity extends AppCompatActivity implements View
 
     public static void showSuccess(String message){
         errorCard.setVisibility(View.GONE);
-        errorTxt.setText(message);
+        successTxt.setText(message);
         successCard.setVisibility(View.VISIBLE);
         cardView.setVisibility(View.GONE);
     }

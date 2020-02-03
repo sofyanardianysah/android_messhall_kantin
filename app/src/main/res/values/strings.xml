@@ -26,4 +26,9 @@
         <item>Lembur</item>
         <item>Kasbon</item>
     </array>
+    <array name="messhall">
+        <item>Pilih Messhall</item>
+        <item>Mallomo</item>
+        <item>SBM</item>
+    </array>
 </resources>
