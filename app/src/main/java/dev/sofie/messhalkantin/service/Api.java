@@ -1,13 +1,10 @@
 package dev.sofie.messhalkantin.service;
 
-import java.util.List;
-
 import dev.sofie.messhalkantin.model.ApiResponse;
 import dev.sofie.messhalkantin.model.Guest;
 import dev.sofie.messhalkantin.model.Magang;
 import dev.sofie.messhalkantin.model.Overview;
 import dev.sofie.messhalkantin.model.User;
-
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -26,6 +23,9 @@ public interface Api {
 
     @POST("kantin/transaction/magang")
     Call<ApiResponse<Magang>> magangTransaction(@Query("nim") String nim);
+
+    @POST("kantin/transaction/guest")
+    Call<ApiResponse<Guest>> guestTransaction(@Query("nit") String nit);
 
     @POST("kantin/transaction/user")
     Call<ApiResponse<User>> userTransaction(@Query("qrcode") String qrcode);

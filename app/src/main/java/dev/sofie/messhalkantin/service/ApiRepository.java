@@ -9,8 +9,6 @@ import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 
-import java.io.IOException;
-
 import dev.sofie.messhalkantin.helper.SharedPreferecesHelper;
 import dev.sofie.messhalkantin.model.ApiResponse;
 import dev.sofie.messhalkantin.model.Guest;
@@ -99,8 +97,28 @@ public class ApiRepository {
         return result;
     }
 
+    public void guestTransaction(String nit){
+        MesshallTransactionActivity.isLoading(true);
+        api.guestTransaction(nit).enqueue(new Callback<ApiResponse<Guest>>() {
+            public void onResponse(Call<ApiResponse<Guest>> call, Response<ApiResponse<Guest>> response) {
+                MesshallTransactionActivity.isLoading(false);
 
-
+                if (response.isSuccessful()) {
+                    if(response.body().getStatus()){
+                        MesshallTransactionActivity.showSuccess(response.body().getMsg());
+                        return;
+                    }
+                    MesshallTransactionActivity.showError(response.body().getMsg());
+                    return;
+                }
+                Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+            }
+            public void onFailure(Call<ApiResponse<Guest>> call, Throwable t) {
+                MesshallTransactionActivity.isLoading(false);
+                Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
 
     // KANTIN TRANSACTION
@@ -113,16 +131,10 @@ public class ApiRepository {
 
                 if (response.isSuccessful()) {
                     if(response.body().getStatus()){
-                        KantinTransactionActivity.successTxt.setText(response.body().getMsg());
-                        KantinTransactionActivity.successCard.setVisibility(View.VISIBLE);
-                        KantinTransactionActivity.errorCard.setVisibility(View.GONE);
-                        KantinTransactionActivity.cardView.setVisibility(View.GONE);
+                        KantinTransactionActivity.showSuccess(response.body().getMsg());
                         return;
                     }
-                    KantinTransactionActivity.errorCard.setVisibility(View.VISIBLE);
-                    KantinTransactionActivity.successCard.setVisibility(View.GONE);
-                    KantinTransactionActivity.cardView.setVisibility(View.GONE);
-                    KantinTransactionActivity.errorTxt.setText(response.body().getMsg());
+                    KantinTransactionActivity.showError(response.body().getMsg());
                     return;
                 }
                 Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
@@ -150,10 +162,7 @@ public class ApiRepository {
                         KantinTransactionActivity.cardView.setVisibility(View.VISIBLE);
                         return;
                     }
-                    KantinTransactionActivity.errorCard.setVisibility(View.VISIBLE);
-                    KantinTransactionActivity.successCard.setVisibility(View.GONE);
-                    KantinTransactionActivity.cardView.setVisibility(View.GONE);
-                    KantinTransactionActivity.errorTxt.setText(response.body().getMsg());
+                    KantinTransactionActivity.showError(response.body().getMsg());
                     return;
                 }
                 Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
@@ -171,20 +180,12 @@ public class ApiRepository {
         api.userAddTransaction(qrcode,keterangan,mp).enqueue(new Callback<ApiResponse<User>>() {
             public void onResponse(Call<ApiResponse<User>> call, Response<ApiResponse<User>> response) {
                 KantinTransactionActivity.isLoading(false);
-
                 if (response.isSuccessful()) {
                     if(response.body().getStatus()){
-
-                        KantinTransactionActivity.successTxt.setText(response.body().getMsg());
-                        KantinTransactionActivity.successCard.setVisibility(View.VISIBLE);
-                        KantinTransactionActivity.errorCard.setVisibility(View.GONE);
-                        KantinTransactionActivity.cardView.setVisibility(View.GONE);
+                        KantinTransactionActivity.showSuccess(response.body().getMsg());
                         return;
                     }
-                    KantinTransactionActivity.errorCard.setVisibility(View.VISIBLE);
-                    KantinTransactionActivity.successCard.setVisibility(View.GONE);
-                    KantinTransactionActivity.cardView.setVisibility(View.GONE);
-                    KantinTransactionActivity.errorTxt.setText(response.body().getMsg());
+                    KantinTransactionActivity.showError(response.body().getMsg());
                     return;
                 }
                 Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();

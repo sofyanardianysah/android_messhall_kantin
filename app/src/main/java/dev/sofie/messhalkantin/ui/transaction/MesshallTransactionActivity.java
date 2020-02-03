@@ -1,18 +1,14 @@
 package dev.sofie.messhalkantin.ui.transaction;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -25,7 +21,7 @@ public class MesshallTransactionActivity extends AppCompatActivity implements Vi
     public static final String TRANSACTION_TYPE = "type";
     public static final String USER_GUEST = "guest";
     public static final String USER_EMPLOYEE = "employee";
-    private static CardView errorCard,successCard,cardView;
+    public static CardView errorCard,successCard,cardView;
     private Button buttonScan,kembaliBtn,submit,tidak;
     public static TextView nama, nik,successTxt,errorTxt;
 
@@ -103,23 +99,20 @@ public class MesshallTransactionActivity extends AppCompatActivity implements Vi
         if (result != null) {
             //if qrcode has nothing in it
             if (result.getContents() == null) {
-
-                Toast.makeText(this, "Transaksi dibatalkan", Toast.LENGTH_LONG).show();
+                showError("Transaksi dibatalkan");
             } else {
                 String id = result.getContents();
                 //if qr contains data
                 switch (userType(id))
                 {
                     case USER_EMPLOYEE:
-                        // go to endpoint karyawan/search
 
                         break;
                     case USER_GUEST:
-                        // go to endpoint guest/search
 
                         break;
                    default:
-                       Toast.makeText(this, "Tipe User Tidak Ditemukan !", Toast.LENGTH_LONG).show();
+                       showError("Tipe User Tidak Ditemukan !");
                        break;
                 }
 
@@ -143,10 +136,7 @@ public class MesshallTransactionActivity extends AppCompatActivity implements Vi
 
             case R.id.no:
                 clearTextView();
-                loading.setVisibility(View.GONE);
-                cardView.setVisibility(View.GONE);
-                errorCard.setVisibility(View.VISIBLE);
-                errorTxt.setText("Transaksi telah dibatalkan");
+                showError("Transaksi telah dibatalkan");
                 break;
             default:
                 break;
@@ -157,5 +147,19 @@ public class MesshallTransactionActivity extends AppCompatActivity implements Vi
         nama.setText("-");
         nik.setText("-");
 
+    }
+
+    public static void showError(String message){
+        errorCard.setVisibility(View.VISIBLE);
+        errorTxt.setText(message);
+        successCard.setVisibility(View.GONE);
+        cardView.setVisibility(View.GONE);
+    }
+
+    public static void showSuccess(String message){
+        errorCard.setVisibility(View.GONE);
+        errorTxt.setText(message);
+        successCard.setVisibility(View.VISIBLE);
+        cardView.setVisibility(View.GONE);
     }
 }

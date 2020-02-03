@@ -2,7 +2,6 @@ package dev.sofie.messhalkantin.ui.transaction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -10,38 +9,31 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import dev.sofie.messhalkantin.R;
-import dev.sofie.messhalkantin.model.Guest;
-import dev.sofie.messhalkantin.model.Magang;
-import dev.sofie.messhalkantin.model.User;
-import dev.sofie.messhalkantin.service.Api;
 import dev.sofie.messhalkantin.service.ApiRepository;
 
 public class KantinTransactionActivity extends AppCompatActivity implements View.OnClickListener {
-    public static final String USER_INTERN = "intern";
-    public static final String USER_EMPLOYEE = "employee";
-    public static CardView errorCard,successCard,cardView;
-    private Button buttonScan,kembaliBtn,submit,tidak;
-    public static TextView nama, nik,kasbonTxt,successTxt,errorTxt;
+    public  static final String USER_INTERN = "intern";
+    public  static final String USER_EMPLOYEE = "employee";
+    public  static CardView errorCard, successCard, cardView;
+    private Button buttonScan, kembaliBtn, submit, tidak;
+    public  static TextView nama, nik, kasbonTxt, successTxt, errorTxt;
     private static ProgressBar loading;
     private IntentIntegrator qrScan;
     private EditText kasbon;
     private Spinner transaksi;
     private ApiRepository repository;
-    public static String qrcode = "";
-    String keterangan = "";
+    public  static String qrcode = "";
+    private String keterangan = "";
 
-    private void initUI(){
+    private void initUI() {
 
         transaksi = findViewById(R.id.transaksi);
         kasbonTxt = findViewById(R.id.textView20);
@@ -49,18 +41,18 @@ public class KantinTransactionActivity extends AppCompatActivity implements View
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String itemname = parent.getItemAtPosition(position).toString();
-                if(itemname.equals("Pilih Transaksi")){
+                if (itemname.equals("Pilih Transaksi")) {
                     submit.setVisibility(View.GONE);
                     tidak.setVisibility(View.GONE);
                     kasbonTxt.setVisibility(View.GONE);
                     kasbon.setVisibility(View.GONE);
-                }else if(itemname.equals("Lembur")){
+                } else if (itemname.equals("Lembur")) {
                     keterangan = itemname.toLowerCase();
                     submit.setVisibility(View.VISIBLE);
                     tidak.setVisibility(View.VISIBLE);
                     kasbonTxt.setVisibility(View.GONE);
                     kasbon.setVisibility(View.GONE);
-                }else if(itemname.equals("Kasbon")){
+                } else if (itemname.equals("Kasbon")) {
                     keterangan = itemname.toLowerCase();
                     submit.setVisibility(View.VISIBLE);
                     tidak.setVisibility(View.VISIBLE);
@@ -68,7 +60,6 @@ public class KantinTransactionActivity extends AppCompatActivity implements View
                     kasbon.setVisibility(View.VISIBLE);
                 }
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 submit.setVisibility(View.GONE);
@@ -90,7 +81,7 @@ public class KantinTransactionActivity extends AppCompatActivity implements View
 
         submit = findViewById(R.id.submit);
         tidak = findViewById(R.id.no);
-        buttonScan =  findViewById(R.id.buttonScan);
+        buttonScan = findViewById(R.id.buttonScan);
         kembaliBtn = findViewById(R.id.kembali);
 
 
@@ -105,7 +96,7 @@ public class KantinTransactionActivity extends AppCompatActivity implements View
 
 
     public static void isLoading(boolean b) {
-        if(b){
+        if (b) {
             loading.setVisibility(View.VISIBLE);
             errorCard.setVisibility(View.GONE);
             successCard.setVisibility(View.GONE);
@@ -116,6 +107,17 @@ public class KantinTransactionActivity extends AppCompatActivity implements View
 
     }
 
+
+    private String userType(String nik) {
+        int length = nik.length();
+        if (length == 7) {
+            return USER_INTERN;
+        } else if (length > 7) {
+            return USER_EMPLOYEE;
+        } else return "Tipe User Tidak Ditemukan !";
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,39 +127,26 @@ public class KantinTransactionActivity extends AppCompatActivity implements View
 
     }
 
-    private String userType(String nik){
-        int length = nik.length();
-        if(length == 7){
-            return USER_INTERN;
-        }else if(length > 7 ){
-            return USER_EMPLOYEE;
-        }else return "Tipe User Tidak Ditemukan !" ;
-    }
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (result != null) {
             if (result.getContents() == null) {
-                Toast.makeText(this, "Transaksi Dibatalkan !", Toast.LENGTH_LONG).show();
+
             } else {
                 String id = result.getContents();
-
-                //if qr contains data
-                switch (userType(id))
-                {
+                showError("Transaksi Dibatalkan !");
+                switch (userType(id)) {
                     case USER_EMPLOYEE:
                         qrcode = id;
                         repository.userTransaction(id);
                         clearTextView();
-
                         break;
                     case USER_INTERN:
                         repository.magangTransaction(id);
                         break;
                     default:
-                        Toast.makeText(this, "Tipe User Tidak Ditemukan !", Toast.LENGTH_LONG).show();
+                        showError("Tipe User Tidak Ditemukan !");
                         break;
                 }
 
@@ -167,9 +156,33 @@ public class KantinTransactionActivity extends AppCompatActivity implements View
         }
     }
 
+    public static void showError(String message){
+        errorCard.setVisibility(View.VISIBLE);
+        errorTxt.setText(message);
+        successCard.setVisibility(View.GONE);
+        cardView.setVisibility(View.GONE);
+    }
+
+    public static void showSuccess(String message){
+        errorCard.setVisibility(View.GONE);
+        errorTxt.setText(message);
+        successCard.setVisibility(View.VISIBLE);
+        cardView.setVisibility(View.GONE);
+    }
+
+
+
+    private void clearTextView() {
+        nama.setText("-");
+        nik.setText("-");
+        kasbon.setText("");
+        transaksi.setSelection(0);
+    }
+
+
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.buttonScan:
                 qrScan.initiateScan();
                 break;
@@ -178,30 +191,19 @@ public class KantinTransactionActivity extends AppCompatActivity implements View
                 break;
             case R.id.submit:
                 String mykasbon = kasbon.getText().toString();
-                if(mykasbon.length() == 0){
+                if (mykasbon.length() == 0) {
                     mykasbon = "0";
                 }
-
-
-
-                repository.userAddTransaction(qrcode,keterangan,mykasbon);
+                repository.userAddTransaction(qrcode, keterangan, mykasbon);
                 break;
             case R.id.no:
                 clearTextView();
-                loading.setVisibility(View.GONE);
-                cardView.setVisibility(View.GONE);
-                errorCard.setVisibility(View.VISIBLE);
-                errorTxt.setText("Transaksi telah dibatalkan");
+                showError("Transaksi telah dibatalkan");
                 break;
             default:
                 break;
         }
     }
 
-    private void clearTextView(){
-        nama.setText("-");
-        nik.setText("-");
-        kasbon.setText("");
-        transaksi.setSelection(0);
-    }
+
 }
