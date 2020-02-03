@@ -17,6 +17,7 @@ import dev.sofie.messhalkantin.model.Overview;
 import dev.sofie.messhalkantin.model.User;
 import dev.sofie.messhalkantin.ui.LoginActivity;
 import dev.sofie.messhalkantin.ui.MainActivity;
+import dev.sofie.messhalkantin.ui.report.CanteenReportActivity;
 import dev.sofie.messhalkantin.ui.report.MesshallReportActivity;
 import dev.sofie.messhalkantin.ui.transaction.KantinTransactionActivity;
 import dev.sofie.messhalkantin.ui.transaction.MesshallTransactionActivity;
@@ -270,6 +271,29 @@ public class ApiRepository {
 
     }
 
+    public MutableLiveData<Overview> getKantinOverview(String id, String bulan) {
 
+        CanteenReportActivity.isLoading(true);
+        final MutableLiveData<Overview> result = new MutableLiveData<>();
+        api.getKantinOverview(id, bulan).enqueue(new Callback<ApiResponse<Overview>>() {
+            public void onResponse(Call<ApiResponse<Overview>> call, Response<ApiResponse<Overview>> response) {
+                CanteenReportActivity.isLoading(false);
+                if (response.isSuccessful()) {
+                    if(response.body().getStatus()){
+                        result.postValue(response.body().getData());
+                        return;
+                    }
+                    Toast.makeText(context, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+            }
+            public void onFailure(Call<ApiResponse<Overview>> call, Throwable t) {
+                CanteenReportActivity.isLoading(false);
+                Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
+            }
+        });
+        return result;
+    }
 
 }

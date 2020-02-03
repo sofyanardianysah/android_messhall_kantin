@@ -39,6 +39,10 @@ public interface Api {
 
     // API FOR KANTIN
 
+    @GET("kantin/overview")
+    Call<ApiResponse<Overview>> getKantinOverview(@Query("id_akun")String id,
+                                                    @Query("bulan")String bulan);
+
     @POST("kantin/transaction/magang")
     Call<ApiResponse<Magang>> magangTransaction(@Query("nim") String nim);
 

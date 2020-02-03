@@ -13,6 +13,16 @@ public class Overview {
     @Expose
     private Integer totalTransaksiTamu;
 
+    @SerializedName("totalKasbon")
+    @Expose
+    private Double totalKasbon;
+    @SerializedName("totalMagang")
+    @Expose
+    private Integer totalMagang;
+    @SerializedName("totalLembur")
+    @Expose
+    private Integer totalLembur;
+
     public Integer getTotalMeal() {
         return totalMeal;
     }
@@ -27,6 +37,30 @@ public class Overview {
 
     public void setTotalTransaksiTamu(Integer totalTransaksiTamu) {
         this.totalTransaksiTamu = totalTransaksiTamu;
+    }
+
+    public Double getTotalKasbon() {
+        return totalKasbon;
+    }
+
+    public void setTotalKasbon(Double totalKasbon) {
+        this.totalKasbon = totalKasbon;
+    }
+
+    public Integer getTotalMagang() {
+        return totalMagang;
+    }
+
+    public void setTotalMagang(Integer totalMagang) {
+        this.totalMagang = totalMagang;
+    }
+
+    public Integer getTotalLembur() {
+        return totalLembur;
+    }
+
+    public void setTotalLembur(Integer totalLembur) {
+        this.totalLembur = totalLembur;
     }
 
 }
