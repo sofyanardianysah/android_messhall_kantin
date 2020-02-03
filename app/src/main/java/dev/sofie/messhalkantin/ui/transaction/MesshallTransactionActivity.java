@@ -116,7 +116,6 @@ public class MesshallTransactionActivity extends AppCompatActivity implements Vi
             }else return "User Tidak Ditemukan !" ;
     }
 
-    //Getting the scan results
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
@@ -126,6 +125,7 @@ public class MesshallTransactionActivity extends AppCompatActivity implements Vi
                 showError("Transaksi dibatalkan");
             } else {
                 String id = result.getContents();
+                qrcode  = id;
                 //if qr contains data
                 switch (userType(id))
                 {
@@ -145,7 +145,7 @@ public class MesshallTransactionActivity extends AppCompatActivity implements Vi
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
-
+    public String qrcode = "";
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -156,7 +156,7 @@ public class MesshallTransactionActivity extends AppCompatActivity implements Vi
                 finish();
                 break;
             case R.id.submit:
-
+                repository.extraTransactionMesshall(qrcode,messhall);
                 break;
 
             case R.id.no:
