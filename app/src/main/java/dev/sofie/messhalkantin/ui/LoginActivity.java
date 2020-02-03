@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         } else if (password.getText().length() != 0) {
             return true;
         } else {
-            password.setError("Silahkan Masukkan Password");
+            password.setError("Silahkan Masukkan Passwords");
             return false;
         }
     }
