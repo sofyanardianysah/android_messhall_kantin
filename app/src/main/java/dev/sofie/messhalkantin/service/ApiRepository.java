@@ -9,11 +9,15 @@ import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 
+import java.util.List;
+
+import dev.sofie.messhalkantin.helper.Excel;
 import dev.sofie.messhalkantin.helper.SharedPreferecesHelper;
 import dev.sofie.messhalkantin.model.ApiResponse;
 import dev.sofie.messhalkantin.model.Guest;
 import dev.sofie.messhalkantin.model.Magang;
 import dev.sofie.messhalkantin.model.Overview;
+import dev.sofie.messhalkantin.model.Report;
 import dev.sofie.messhalkantin.model.User;
 import dev.sofie.messhalkantin.ui.LoginActivity;
 import dev.sofie.messhalkantin.ui.MainActivity;
@@ -191,9 +195,6 @@ public class ApiRepository {
 
     }
 
-
-
-    // KANTIN TRANSACTION
     public void magangTransaction(String nim) {
 
         KantinTransactionActivity.isLoading(true);
@@ -294,6 +295,49 @@ public class ApiRepository {
             }
         });
         return result;
+    }
+
+
+
+    public void kantinReport(String bulan, String status) {
+//        LoginActivity.setLoading(true);
+        api.reportKantin(bulan, status).enqueue(new Callback<ApiResponse<List<Report>>>() {
+            public void onResponse(Call<ApiResponse<List<Report>>> call, Response<ApiResponse<List<Report>>> response) {
+
+
+            }
+
+            public void onFailure(Call<ApiResponse<List<Report>>> call, Throwable t) {
+//                LoginActivity.setLoading(false);
+                Toast.makeText(context,"Internal Server Error !",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void messhallReport(String bulan, String user) {
+        MesshallReportActivity.isLoading(true);
+        api.reportMesshall(bulan, user).enqueue(new Callback<ApiResponse<List<Report>>>() {
+            public void onResponse(Call<ApiResponse<List<Report>>> call, Response<ApiResponse<List<Report>>> response) {
+                MesshallReportActivity.isLoading(false);
+                if (response.isSuccessful()) {
+                    if(response.body().getStatus()){
+                        MesshallReportActivity.showStatus(true,response.body().getMsg());
+                        Excel.messhall("test");
+                        return;
+                    }
+                    MesshallReportActivity.showStatus(false,response.body().getMsg());
+                    return;
+                }
+                Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+
+            }
+
+            public void onFailure(Call<ApiResponse<List<Report>>> call, Throwable t) {
+                MesshallReportActivity.isLoading(false);
+                Log.e("error",t.getMessage());
+                Toast.makeText(context,"Internal Server Error !",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }

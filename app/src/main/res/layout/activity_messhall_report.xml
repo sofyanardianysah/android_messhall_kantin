@@ -1,11 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:aapt="http://schemas.android.com/aapt"
     xmlns:sweet="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f5f3f3">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/statusCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:visibility="gone"
+
+        sweet:layout_constraintEnd_toEndOf="parent"
+        sweet:layout_constraintStart_toStartOf="parent"
+        sweet:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/statusTxt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14sp"
+                sweet:fontFamily="@font/montserrat"
+                sweet:layout_constraintBottom_toBottomOf="parent"
+                sweet:layout_constraintEnd_toEndOf="parent"
+                sweet:layout_constraintStart_toStartOf="parent"
+                sweet:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -79,10 +117,9 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
         sweet:layout_constraintEnd_toEndOf="parent"
         sweet:layout_constraintStart_toStartOf="parent"
-        sweet:layout_constraintTop_toBottomOf="@+id/toolbar">
+        sweet:layout_constraintTop_toBottomOf="@+id/statusCard">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -139,7 +176,7 @@
                 sweet:layout_constraintTop_toBottomOf="@+id/textView9" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/karyawanBtn"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="16dp"
@@ -153,7 +190,7 @@
                 sweet:layout_constraintTop_toBottomOf="@+id/textView10" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/guestBtn"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="16dp"
@@ -167,7 +204,7 @@
                 sweet:layout_constraintEnd_toEndOf="parent"
                 sweet:layout_constraintHorizontal_bias="0.0"
                 sweet:layout_constraintStart_toStartOf="parent"
-                sweet:layout_constraintTop_toBottomOf="@+id/button" />
+                sweet:layout_constraintTop_toBottomOf="@+id/karyawanBtn" />
 
             <TextView
                 android:id="@+id/magang"

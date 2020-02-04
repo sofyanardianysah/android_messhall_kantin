@@ -43,6 +43,7 @@ dependencies {
         pagingVersion = '2.1.0'
         glideVersion = '4.9.0'
         idleResourceVersion = '3.2.0'
+        poiVersion = '3.17'
     }
 
 
@@ -57,6 +58,8 @@ dependencies {
     implementation "androidx.annotation:annotation:$androidXAnnotations"
     implementation "androidx.legacy:legacy-support-v4:$androidXLegacySupport"
 
+    implementation "com.github.SUPERCILEX.poi-android:poi:$poiVersion"
+//    implementation 'com.fasterxml:aalto-xml:1.0.0'
     // retrofit
     implementation "com.squareup.retrofit2:retrofit:2.6.0"
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'

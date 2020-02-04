@@ -1,9 +1,12 @@
 package dev.sofie.messhalkantin.service;
 
+import java.util.List;
+
 import dev.sofie.messhalkantin.model.ApiResponse;
 import dev.sofie.messhalkantin.model.Guest;
 import dev.sofie.messhalkantin.model.Magang;
 import dev.sofie.messhalkantin.model.Overview;
+import dev.sofie.messhalkantin.model.Report;
 import dev.sofie.messhalkantin.model.User;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -36,6 +39,10 @@ public interface Api {
     Call<ApiResponse<User>> extraTransaction(@Query("qrcode") String qrcode,
                                               @Query("messhall") String messhall);
 
+    @GET("messhall/report")
+    Call<ApiResponse<List<Report>>> reportMesshall(@Query("bulan")String bulan,
+                                             @Query("user")String user);
+
 
     // API FOR KANTIN
 
@@ -54,5 +61,8 @@ public interface Api {
                                                @Query("keterangan") String keterangan,
                                                @Query("mp") String mp);
 
+    @GET("kantin/report")
+    Call<ApiResponse<List<Report>>> reportKantin(@Query("bulan")String bulan,
+                                                 @Query("status")String status);
 
 }
