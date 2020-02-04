@@ -28,7 +28,7 @@ public class Excel {
 
             Row row = sheet.createRow(i);
             row.createCell(0).setCellValue(arr.get(i));
-            row.createCell(1).setCellValue("1 anu");
+            row.createCell(1).setCellValue("1 anu1");
         }
 
         String fileName = filename+".xls";
