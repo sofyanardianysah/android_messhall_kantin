@@ -13,6 +13,7 @@ import java.util.List;
 
 import dev.sofie.messhalkantin.helper.Excel;
 import dev.sofie.messhalkantin.helper.SharedPreferecesHelper;
+import dev.sofie.messhalkantin.helper.UIHelper;
 import dev.sofie.messhalkantin.model.ApiResponse;
 import dev.sofie.messhalkantin.model.Guest;
 import dev.sofie.messhalkantin.model.Magang;
@@ -44,7 +45,7 @@ public class ApiRepository {
 
     public static ApiRepository getInstance(Context context) {
         if (repository == null) {
-            repository = new ApiRepository(context,new Builder().baseUrl(BASE_URL)
+            repository = new ApiRepository(context, new Builder().baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create()).build().create(Api.class));
         }
         return repository;
@@ -72,7 +73,7 @@ public class ApiRepository {
 
             public void onFailure(Call<ApiResponse<User>> call, Throwable t) {
                 LoginActivity.setLoading(false);
-                Toast.makeText(context,"Internal Server Error !",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -85,7 +86,7 @@ public class ApiRepository {
             public void onResponse(Call<ApiResponse<Overview>> call, Response<ApiResponse<Overview>> response) {
                 MesshallReportActivity.isLoading(false);
                 if (response.isSuccessful()) {
-                    if(response.body().getStatus()){
+                    if (response.body().getStatus()) {
                         result.postValue(response.body().getData());
                         return;
                     }
@@ -94,6 +95,7 @@ public class ApiRepository {
                 }
                 Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
             }
+
             public void onFailure(Call<ApiResponse<Overview>> call, Throwable t) {
                 MesshallReportActivity.isLoading(false);
                 Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
@@ -102,14 +104,14 @@ public class ApiRepository {
         return result;
     }
 
-    public void guestTransaction(String nit,String messhall){
+    public void guestTransaction(String nit, String messhall) {
         MesshallTransactionActivity.isLoading(true);
-        api.guestTransaction(nit,messhall).enqueue(new Callback<ApiResponse<Guest>>() {
+        api.guestTransaction(nit, messhall).enqueue(new Callback<ApiResponse<Guest>>() {
             public void onResponse(Call<ApiResponse<Guest>> call, Response<ApiResponse<Guest>> response) {
                 MesshallTransactionActivity.isLoading(false);
 
                 if (response.isSuccessful()) {
-                    if(response.body().getStatus()){
+                    if (response.body().getStatus()) {
                         MesshallTransactionActivity.showSuccess(response.body().getMsg());
                         return;
                     }
@@ -118,6 +120,7 @@ public class ApiRepository {
                 }
                 Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
             }
+
             public void onFailure(Call<ApiResponse<Guest>> call, Throwable t) {
                 MesshallTransactionActivity.isLoading(false);
                 Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
@@ -125,22 +128,22 @@ public class ApiRepository {
         });
     }
 
-    public void userTransactionMesshall(String qrcode,String messhall){
+    public void userTransactionMesshall(String qrcode, String messhall) {
         MesshallTransactionActivity.isLoading(true);
-        api.userTransactionMesshall(qrcode,messhall).enqueue(new Callback<ApiResponse<User>>() {
+        api.userTransactionMesshall(qrcode, messhall).enqueue(new Callback<ApiResponse<User>>() {
             public void onResponse(Call<ApiResponse<User>> call, Response<ApiResponse<User>> response) {
                 MesshallTransactionActivity.isLoading(false);
 
                 if (response.isSuccessful()) {
-                    if(response.body().getStatus()){
-                        if(response.body().getData() != null){
+                    if (response.body().getStatus()) {
+                        if (response.body().getData() != null) {
                             MesshallTransactionActivity.nama.setText(response.body().getData().getNama());
                             MesshallTransactionActivity.nik.setText(response.body().getData().getNik());
                             MesshallTransactionActivity.errorTxt.setText(response.body().getMsg());
                             MesshallTransactionActivity.successCard.setVisibility(View.GONE);
                             MesshallTransactionActivity.errorCard.setVisibility(View.VISIBLE);
                             MesshallTransactionActivity.cardView.setVisibility(View.VISIBLE);
-                        }else{
+                        } else {
                             MesshallTransactionActivity.showSuccess(response.body().getMsg());
 
                         }
@@ -152,6 +155,7 @@ public class ApiRepository {
                 }
                 Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
             }
+
             public void onFailure(Call<ApiResponse<User>> call, Throwable t) {
                 MesshallTransactionActivity.isLoading(false);
                 Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
@@ -160,22 +164,22 @@ public class ApiRepository {
 
     }
 
-    public void extraTransactionMesshall(String qrcode,String messhall){
+    public void extraTransactionMesshall(String qrcode, String messhall) {
         MesshallTransactionActivity.isLoading(true);
-        api.extraTransaction(qrcode,messhall).enqueue(new Callback<ApiResponse<User>>() {
+        api.extraTransaction(qrcode, messhall).enqueue(new Callback<ApiResponse<User>>() {
             public void onResponse(Call<ApiResponse<User>> call, Response<ApiResponse<User>> response) {
                 MesshallTransactionActivity.isLoading(false);
 
                 if (response.isSuccessful()) {
-                    if(response.body().getStatus()){
-                        if(response.body().getData() != null){
+                    if (response.body().getStatus()) {
+                        if (response.body().getData() != null) {
                             MesshallTransactionActivity.nama.setText(response.body().getData().getNama());
                             MesshallTransactionActivity.nik.setText(response.body().getData().getNik());
                             MesshallTransactionActivity.errorTxt.setText(response.body().getMsg());
                             MesshallTransactionActivity.successCard.setVisibility(View.GONE);
                             MesshallTransactionActivity.errorCard.setVisibility(View.VISIBLE);
                             MesshallTransactionActivity.cardView.setVisibility(View.VISIBLE);
-                        }else{
+                        } else {
                             MesshallTransactionActivity.showSuccess(response.body().getMsg());
 
                         }
@@ -187,6 +191,7 @@ public class ApiRepository {
                 }
                 Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
             }
+
             public void onFailure(Call<ApiResponse<User>> call, Throwable t) {
                 MesshallTransactionActivity.isLoading(false);
                 Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
@@ -203,7 +208,7 @@ public class ApiRepository {
                 KantinTransactionActivity.isLoading(false);
 
                 if (response.isSuccessful()) {
-                    if(response.body().getStatus()){
+                    if (response.body().getStatus()) {
                         KantinTransactionActivity.showSuccess(response.body().getMsg());
                         return;
                     }
@@ -212,6 +217,7 @@ public class ApiRepository {
                 }
                 Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
             }
+
             public void onFailure(Call<ApiResponse<Magang>> call, Throwable t) {
                 KantinTransactionActivity.isLoading(false);
                 Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
@@ -220,14 +226,14 @@ public class ApiRepository {
 
     }
 
-    public void userTransaction(String qrcode){
+    public void userTransaction(String qrcode) {
         KantinTransactionActivity.isLoading(true);
         api.userTransaction(qrcode).enqueue(new Callback<ApiResponse<User>>() {
             public void onResponse(Call<ApiResponse<User>> call, Response<ApiResponse<User>> response) {
                 KantinTransactionActivity.isLoading(false);
 
                 if (response.isSuccessful()) {
-                    if(response.body().getStatus()){
+                    if (response.body().getStatus()) {
                         KantinTransactionActivity.nama.setText(response.body().getData().getNama());
                         KantinTransactionActivity.nik.setText(response.body().getData().getNik());
                         KantinTransactionActivity.successCard.setVisibility(View.GONE);
@@ -240,6 +246,7 @@ public class ApiRepository {
                 }
                 Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
             }
+
             public void onFailure(Call<ApiResponse<User>> call, Throwable t) {
                 KantinTransactionActivity.isLoading(false);
                 Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
@@ -248,13 +255,13 @@ public class ApiRepository {
 
     }
 
-    public void userAddTransaction(String qrcode,String keterangan,String mp){
+    public void userAddTransaction(String qrcode, String keterangan, String mp) {
         KantinTransactionActivity.isLoading(true);
-        api.userAddTransaction(qrcode,keterangan,mp).enqueue(new Callback<ApiResponse<User>>() {
+        api.userAddTransaction(qrcode, keterangan, mp).enqueue(new Callback<ApiResponse<User>>() {
             public void onResponse(Call<ApiResponse<User>> call, Response<ApiResponse<User>> response) {
                 KantinTransactionActivity.isLoading(false);
                 if (response.isSuccessful()) {
-                    if(response.body().getStatus()){
+                    if (response.body().getStatus()) {
                         KantinTransactionActivity.showSuccess(response.body().getMsg());
                         return;
                     }
@@ -263,9 +270,10 @@ public class ApiRepository {
                 }
                 Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
             }
+
             public void onFailure(Call<ApiResponse<User>> call, Throwable t) {
                 KantinTransactionActivity.isLoading(false);
-                Log.e("test",t.getMessage());
+                Log.e("test", t.getMessage());
                 Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
             }
         });
@@ -280,7 +288,7 @@ public class ApiRepository {
             public void onResponse(Call<ApiResponse<Overview>> call, Response<ApiResponse<Overview>> response) {
                 CanteenReportActivity.isLoading(false);
                 if (response.isSuccessful()) {
-                    if(response.body().getStatus()){
+                    if (response.body().getStatus()) {
                         result.postValue(response.body().getData());
                         return;
                     }
@@ -289,6 +297,7 @@ public class ApiRepository {
                 }
                 Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
             }
+
             public void onFailure(Call<ApiResponse<Overview>> call, Throwable t) {
                 CanteenReportActivity.isLoading(false);
                 Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
@@ -296,7 +305,6 @@ public class ApiRepository {
         });
         return result;
     }
-
 
 
     public void kantinReport(String bulan, String status) {
@@ -309,23 +317,28 @@ public class ApiRepository {
 
             public void onFailure(Call<ApiResponse<List<Report>>> call, Throwable t) {
 //                LoginActivity.setLoading(false);
-                Toast.makeText(context,"Internal Server Error !",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    public void messhallReport(String bulan, String user) {
+    public void messhallReport(final String bulan, final String user) {
         MesshallReportActivity.isLoading(true);
         api.reportMesshall(bulan, user).enqueue(new Callback<ApiResponse<List<Report>>>() {
             public void onResponse(Call<ApiResponse<List<Report>>> call, Response<ApiResponse<List<Report>>> response) {
                 MesshallReportActivity.isLoading(false);
                 if (response.isSuccessful()) {
-                    if(response.body().getStatus()){
-                        MesshallReportActivity.showStatus(true,response.body().getMsg());
-                        Excel.messhall("test");
+                    if (response.body().getStatus()) {
+                        MesshallReportActivity.showStatus(true, response.body().getMsg());
+                        boolean isSusccess = Excel.messhallReport("messhall_report_"+user,response.body().getData());
+                        if(isSusccess){
+                            MesshallReportActivity.showStatus(true,"Report telah dibuat, silahkan cek folder MesshallReport");
+                        }else{
+                            MesshallReportActivity.showStatus(false,"Report gagal dibuat, silahkan coba lagi");
+                        }
                         return;
                     }
-                    MesshallReportActivity.showStatus(false,response.body().getMsg());
+                    MesshallReportActivity.showStatus(false, response.body().getMsg());
                     return;
                 }
                 Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
@@ -334,8 +347,8 @@ public class ApiRepository {
 
             public void onFailure(Call<ApiResponse<List<Report>>> call, Throwable t) {
                 MesshallReportActivity.isLoading(false);
-                Log.e("error",t.getMessage());
-                Toast.makeText(context,"Internal Server Error !",Toast.LENGTH_SHORT).show();
+                Log.e("error", t.getMessage());
+                Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
             }
         });
     }
