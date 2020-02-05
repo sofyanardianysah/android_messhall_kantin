@@ -11,9 +11,8 @@ import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 
-import dev.sofie.messhalkantin.helper.Excel;
+import dev.sofie.messhalkantin.helper.ExcelHelper;
 import dev.sofie.messhalkantin.helper.SharedPreferecesHelper;
-import dev.sofie.messhalkantin.helper.UIHelper;
 import dev.sofie.messhalkantin.model.ApiResponse;
 import dev.sofie.messhalkantin.model.Guest;
 import dev.sofie.messhalkantin.model.Magang;
@@ -51,6 +50,10 @@ public class ApiRepository {
         return repository;
     }
 
+    /**
+     * Auth
+     **/
+
     public void login(String nik, String password) {
         LoginActivity.setLoading(true);
         api.login(nik, password).enqueue(new Callback<ApiResponse<User>>() {
@@ -78,6 +81,253 @@ public class ApiRepository {
         });
     }
 
+
+    /**
+     * Report
+     **/
+
+    public void kantinReport(String bulan, final String status) {
+        CanteenReportActivity.isLoading(true);
+        api.reportKantin(bulan, status).enqueue(new Callback<ApiResponse<List<Report>>>() {
+            public void onResponse(Call<ApiResponse<List<Report>>> call, Response<ApiResponse<List<Report>>> response) {
+                CanteenReportActivity.isLoading(false);
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus()) {
+                        CanteenReportActivity.showStatus(true, response.body().getMsg());
+                        boolean isSusccess = ExcelHelper.report("kantin_report_" + status, response.body().getData());
+                        if (isSusccess) {
+                            CanteenReportActivity.showStatus(true, "Report telah dibuat, silahkan cek folder MesshallReport");
+                        } else {
+                            CanteenReportActivity.showStatus(false, "Report gagal dibuat, silahkan coba lagi");
+                        }
+                        return;
+                    }
+                    CanteenReportActivity.showStatus(false, response.body().getMsg());
+                    return;
+                }
+                Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+
+            }
+
+            public void onFailure(Call<ApiResponse<List<Report>>> call, Throwable t) {
+                CanteenReportActivity.isLoading(false);
+                Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void messhallReport(final String bulan, final String user) {
+        MesshallReportActivity.isLoading(true);
+        api.reportMesshall(bulan, user).enqueue(new Callback<ApiResponse<List<Report>>>() {
+            public void onResponse(Call<ApiResponse<List<Report>>> call, Response<ApiResponse<List<Report>>> response) {
+                MesshallReportActivity.isLoading(false);
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus()) {
+                        MesshallReportActivity.showStatus(true, response.body().getMsg());
+                        boolean isSusccess = ExcelHelper.report("messhall_report_" + user, response.body().getData());
+                        if (isSusccess) {
+                            MesshallReportActivity.showStatus(true, "Report telah dibuat, silahkan cek folder MesshallReport");
+                        } else {
+                            MesshallReportActivity.showStatus(false, "Report gagal dibuat, silahkan coba lagi");
+                        }
+                        return;
+                    }
+                    MesshallReportActivity.showStatus(false, response.body().getMsg());
+                    return;
+                }
+                Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+
+            }
+
+            public void onFailure(Call<ApiResponse<List<Report>>> call, Throwable t) {
+                MesshallReportActivity.isLoading(false);
+                Log.e("error", t.getMessage());
+                Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+    /**
+     * Transaction
+     **/
+
+    public void guestTransaction(String nit, String messhall) {
+        MesshallTransactionActivity.isLoading(true);
+        api.guestTransaction(nit, messhall).enqueue(new Callback<ApiResponse<Guest>>() {
+            public void onResponse(Call<ApiResponse<Guest>> call, Response<ApiResponse<Guest>> response) {
+                MesshallTransactionActivity.isLoading(false);
+
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus()) {
+                        MesshallTransactionActivity.showStatus(true,response.body().getMsg());
+                        return;
+                    }
+                    MesshallTransactionActivity.showStatus(false,response.body().getMsg());
+                    return;
+                }
+                Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+            }
+
+            public void onFailure(Call<ApiResponse<Guest>> call, Throwable t) {
+                MesshallTransactionActivity.isLoading(false);
+                Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void userTransactionMesshall(String qrcode, String messhall) {
+        MesshallTransactionActivity.isLoading(true);
+        api.userTransactionMesshall(qrcode, messhall).enqueue(new Callback<ApiResponse<User>>() {
+            public void onResponse(Call<ApiResponse<User>> call, Response<ApiResponse<User>> response) {
+                MesshallTransactionActivity.isLoading(false);
+
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus()) {
+                        if (response.body().getData() != null) {
+                            MesshallTransactionActivity.nama.setText(response.body().getData().getNama());
+                            MesshallTransactionActivity.nik.setText(response.body().getData().getNik());
+                            MesshallTransactionActivity.showStatus(false,response.body().getMsg());
+                            MesshallTransactionActivity.cardView.setVisibility(View.VISIBLE);
+                        } else {
+                            MesshallTransactionActivity.showStatus(true,response.body().getMsg());
+
+                        }
+
+                        return;
+                    }
+                    MesshallTransactionActivity.showStatus(false,response.body().getMsg());
+                    return;
+                }
+                Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+            }
+
+            public void onFailure(Call<ApiResponse<User>> call, Throwable t) {
+                MesshallTransactionActivity.isLoading(false);
+                Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    public void extraTransactionMesshall(String qrcode, String messhall) {
+        MesshallTransactionActivity.isLoading(true);
+        api.extraTransaction(qrcode, messhall).enqueue(new Callback<ApiResponse<User>>() {
+            public void onResponse(Call<ApiResponse<User>> call, Response<ApiResponse<User>> response) {
+                MesshallTransactionActivity.isLoading(false);
+
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus()) {
+                        if (response.body().getData() != null) {
+                            MesshallTransactionActivity.nama.setText(response.body().getData().getNama());
+                            MesshallTransactionActivity.nik.setText(response.body().getData().getNik());
+                            MesshallTransactionActivity.showStatus(false,response.body().getMsg());
+                            MesshallTransactionActivity.cardView.setVisibility(View.VISIBLE);
+                        } else {
+                            MesshallTransactionActivity.showStatus(true,response.body().getMsg());
+
+                        }
+
+                        return;
+                    }
+                    MesshallTransactionActivity.showStatus(false,response.body().getMsg());
+                    return;
+                }
+                Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+            }
+
+            public void onFailure(Call<ApiResponse<User>> call, Throwable t) {
+                MesshallTransactionActivity.isLoading(false);
+                Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    public void magangTransaction(String nim) {
+
+        KantinTransactionActivity.isLoading(true);
+        api.magangTransaction(nim).enqueue(new Callback<ApiResponse<Magang>>() {
+            public void onResponse(Call<ApiResponse<Magang>> call, Response<ApiResponse<Magang>> response) {
+                KantinTransactionActivity.isLoading(false);
+
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus()) {
+                        KantinTransactionActivity.showStatus(true, response.body().getMsg());
+                        return;
+                    }
+                    KantinTransactionActivity.showStatus(false, response.body().getMsg());
+                    return;
+                }
+                Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+            }
+
+            public void onFailure(Call<ApiResponse<Magang>> call, Throwable t) {
+                KantinTransactionActivity.isLoading(false);
+                Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    public void userTransaction(String qrcode) {
+        KantinTransactionActivity.isLoading(true);
+        api.userTransaction(qrcode).enqueue(new Callback<ApiResponse<User>>() {
+            public void onResponse(Call<ApiResponse<User>> call, Response<ApiResponse<User>> response) {
+                KantinTransactionActivity.isLoading(false);
+
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus()) {
+                        KantinTransactionActivity.nama.setText(response.body().getData().getNama());
+                        KantinTransactionActivity.nik.setText(response.body().getData().getNik());
+                        KantinTransactionActivity.statusCard.setVisibility(View.GONE);
+                        KantinTransactionActivity.cardView.setVisibility(View.VISIBLE);
+                        return;
+                    }
+                    KantinTransactionActivity.showStatus(false, response.body().getMsg());
+                    return;
+                }
+                Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+            }
+
+            public void onFailure(Call<ApiResponse<User>> call, Throwable t) {
+                KantinTransactionActivity.isLoading(false);
+                Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    public void userAddTransaction(String qrcode, String keterangan, String mp) {
+        KantinTransactionActivity.isLoading(true);
+        api.userAddTransaction(qrcode, keterangan, mp).enqueue(new Callback<ApiResponse<User>>() {
+            public void onResponse(Call<ApiResponse<User>> call, Response<ApiResponse<User>> response) {
+                KantinTransactionActivity.isLoading(false);
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus()) {
+                        KantinTransactionActivity.showStatus(true, response.body().getMsg());
+                        return;
+                    }
+                    KantinTransactionActivity.showStatus(false, response.body().getMsg());
+                    return;
+                }
+                Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+            }
+
+            public void onFailure(Call<ApiResponse<User>> call, Throwable t) {
+                KantinTransactionActivity.isLoading(false);
+                Log.e("test", t.getMessage());
+                Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+
+    /**
+     * Overview
+     **/
+
     public MutableLiveData<Overview> getMesshallOverview(String id, String bulan) {
 
         MesshallReportActivity.isLoading(true);
@@ -104,182 +354,6 @@ public class ApiRepository {
         return result;
     }
 
-    public void guestTransaction(String nit, String messhall) {
-        MesshallTransactionActivity.isLoading(true);
-        api.guestTransaction(nit, messhall).enqueue(new Callback<ApiResponse<Guest>>() {
-            public void onResponse(Call<ApiResponse<Guest>> call, Response<ApiResponse<Guest>> response) {
-                MesshallTransactionActivity.isLoading(false);
-
-                if (response.isSuccessful()) {
-                    if (response.body().getStatus()) {
-                        MesshallTransactionActivity.showSuccess(response.body().getMsg());
-                        return;
-                    }
-                    MesshallTransactionActivity.showError(response.body().getMsg());
-                    return;
-                }
-                Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
-            }
-
-            public void onFailure(Call<ApiResponse<Guest>> call, Throwable t) {
-                MesshallTransactionActivity.isLoading(false);
-                Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    public void userTransactionMesshall(String qrcode, String messhall) {
-        MesshallTransactionActivity.isLoading(true);
-        api.userTransactionMesshall(qrcode, messhall).enqueue(new Callback<ApiResponse<User>>() {
-            public void onResponse(Call<ApiResponse<User>> call, Response<ApiResponse<User>> response) {
-                MesshallTransactionActivity.isLoading(false);
-
-                if (response.isSuccessful()) {
-                    if (response.body().getStatus()) {
-                        if (response.body().getData() != null) {
-                            MesshallTransactionActivity.nama.setText(response.body().getData().getNama());
-                            MesshallTransactionActivity.nik.setText(response.body().getData().getNik());
-                            MesshallTransactionActivity.errorTxt.setText(response.body().getMsg());
-                            MesshallTransactionActivity.successCard.setVisibility(View.GONE);
-                            MesshallTransactionActivity.errorCard.setVisibility(View.VISIBLE);
-                            MesshallTransactionActivity.cardView.setVisibility(View.VISIBLE);
-                        } else {
-                            MesshallTransactionActivity.showSuccess(response.body().getMsg());
-
-                        }
-
-                        return;
-                    }
-                    MesshallTransactionActivity.showError(response.body().getMsg());
-                    return;
-                }
-                Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
-            }
-
-            public void onFailure(Call<ApiResponse<User>> call, Throwable t) {
-                MesshallTransactionActivity.isLoading(false);
-                Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
-
-    public void extraTransactionMesshall(String qrcode, String messhall) {
-        MesshallTransactionActivity.isLoading(true);
-        api.extraTransaction(qrcode, messhall).enqueue(new Callback<ApiResponse<User>>() {
-            public void onResponse(Call<ApiResponse<User>> call, Response<ApiResponse<User>> response) {
-                MesshallTransactionActivity.isLoading(false);
-
-                if (response.isSuccessful()) {
-                    if (response.body().getStatus()) {
-                        if (response.body().getData() != null) {
-                            MesshallTransactionActivity.nama.setText(response.body().getData().getNama());
-                            MesshallTransactionActivity.nik.setText(response.body().getData().getNik());
-                            MesshallTransactionActivity.errorTxt.setText(response.body().getMsg());
-                            MesshallTransactionActivity.successCard.setVisibility(View.GONE);
-                            MesshallTransactionActivity.errorCard.setVisibility(View.VISIBLE);
-                            MesshallTransactionActivity.cardView.setVisibility(View.VISIBLE);
-                        } else {
-                            MesshallTransactionActivity.showSuccess(response.body().getMsg());
-
-                        }
-
-                        return;
-                    }
-                    MesshallTransactionActivity.showError(response.body().getMsg());
-                    return;
-                }
-                Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
-            }
-
-            public void onFailure(Call<ApiResponse<User>> call, Throwable t) {
-                MesshallTransactionActivity.isLoading(false);
-                Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
-
-    public void magangTransaction(String nim) {
-
-        KantinTransactionActivity.isLoading(true);
-        api.magangTransaction(nim).enqueue(new Callback<ApiResponse<Magang>>() {
-            public void onResponse(Call<ApiResponse<Magang>> call, Response<ApiResponse<Magang>> response) {
-                KantinTransactionActivity.isLoading(false);
-
-                if (response.isSuccessful()) {
-                    if (response.body().getStatus()) {
-                        KantinTransactionActivity.showSuccess(response.body().getMsg());
-                        return;
-                    }
-                    KantinTransactionActivity.showError(response.body().getMsg());
-                    return;
-                }
-                Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
-            }
-
-            public void onFailure(Call<ApiResponse<Magang>> call, Throwable t) {
-                KantinTransactionActivity.isLoading(false);
-                Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
-
-    public void userTransaction(String qrcode) {
-        KantinTransactionActivity.isLoading(true);
-        api.userTransaction(qrcode).enqueue(new Callback<ApiResponse<User>>() {
-            public void onResponse(Call<ApiResponse<User>> call, Response<ApiResponse<User>> response) {
-                KantinTransactionActivity.isLoading(false);
-
-                if (response.isSuccessful()) {
-                    if (response.body().getStatus()) {
-                        KantinTransactionActivity.nama.setText(response.body().getData().getNama());
-                        KantinTransactionActivity.nik.setText(response.body().getData().getNik());
-                        KantinTransactionActivity.successCard.setVisibility(View.GONE);
-                        KantinTransactionActivity.errorCard.setVisibility(View.GONE);
-                        KantinTransactionActivity.cardView.setVisibility(View.VISIBLE);
-                        return;
-                    }
-                    KantinTransactionActivity.showError(response.body().getMsg());
-                    return;
-                }
-                Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
-            }
-
-            public void onFailure(Call<ApiResponse<User>> call, Throwable t) {
-                KantinTransactionActivity.isLoading(false);
-                Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
-
-    public void userAddTransaction(String qrcode, String keterangan, String mp) {
-        KantinTransactionActivity.isLoading(true);
-        api.userAddTransaction(qrcode, keterangan, mp).enqueue(new Callback<ApiResponse<User>>() {
-            public void onResponse(Call<ApiResponse<User>> call, Response<ApiResponse<User>> response) {
-                KantinTransactionActivity.isLoading(false);
-                if (response.isSuccessful()) {
-                    if (response.body().getStatus()) {
-                        KantinTransactionActivity.showSuccess(response.body().getMsg());
-                        return;
-                    }
-                    KantinTransactionActivity.showError(response.body().getMsg());
-                    return;
-                }
-                Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
-            }
-
-            public void onFailure(Call<ApiResponse<User>> call, Throwable t) {
-                KantinTransactionActivity.isLoading(false);
-                Log.e("test", t.getMessage());
-                Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
-
     public MutableLiveData<Overview> getKantinOverview(String id, String bulan) {
 
         CanteenReportActivity.isLoading(true);
@@ -304,53 +378,6 @@ public class ApiRepository {
             }
         });
         return result;
-    }
-
-
-    public void kantinReport(String bulan, String status) {
-//        LoginActivity.setLoading(true);
-        api.reportKantin(bulan, status).enqueue(new Callback<ApiResponse<List<Report>>>() {
-            public void onResponse(Call<ApiResponse<List<Report>>> call, Response<ApiResponse<List<Report>>> response) {
-
-
-            }
-
-            public void onFailure(Call<ApiResponse<List<Report>>> call, Throwable t) {
-//                LoginActivity.setLoading(false);
-                Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    public void messhallReport(final String bulan, final String user) {
-        MesshallReportActivity.isLoading(true);
-        api.reportMesshall(bulan, user).enqueue(new Callback<ApiResponse<List<Report>>>() {
-            public void onResponse(Call<ApiResponse<List<Report>>> call, Response<ApiResponse<List<Report>>> response) {
-                MesshallReportActivity.isLoading(false);
-                if (response.isSuccessful()) {
-                    if (response.body().getStatus()) {
-                        MesshallReportActivity.showStatus(true, response.body().getMsg());
-                        boolean isSusccess = Excel.messhallReport("messhall_report_"+user,response.body().getData());
-                        if(isSusccess){
-                            MesshallReportActivity.showStatus(true,"Report telah dibuat, silahkan cek folder MesshallReport");
-                        }else{
-                            MesshallReportActivity.showStatus(false,"Report gagal dibuat, silahkan coba lagi");
-                        }
-                        return;
-                    }
-                    MesshallReportActivity.showStatus(false, response.body().getMsg());
-                    return;
-                }
-                Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
-
-            }
-
-            public void onFailure(Call<ApiResponse<List<Report>>> call, Throwable t) {
-                MesshallReportActivity.isLoading(false);
-                Log.e("error", t.getMessage());
-                Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
 }

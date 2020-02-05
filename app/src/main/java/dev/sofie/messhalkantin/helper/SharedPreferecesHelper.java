@@ -14,7 +14,7 @@ public class SharedPreferecesHelper {
     public static String userIDPref = "id";
     public static String namaPref = "nama";
     public static String nikPref = "nik";
-    public static String rolePref = "nik";
+    public static String rolePref = "role";
     public SharedPreferecesHelper(Context context){
         this.mContext = context;
     }

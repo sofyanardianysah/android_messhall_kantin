@@ -15,9 +15,7 @@ import android.widget.ImageView;
 import dev.sofie.messhalkantin.R;
 import dev.sofie.messhalkantin.ui.report.CanteenReportActivity;
 import dev.sofie.messhalkantin.ui.transaction.KantinTransactionActivity;
-import dev.sofie.messhalkantin.ui.transaction.MesshallTransactionActivity;
 
-import static dev.sofie.messhalkantin.helper.ChangePNGColor.changeColor;
 
 
 public class MenuKantinFragment extends Fragment implements View.OnClickListener {
@@ -28,17 +26,13 @@ public class MenuKantinFragment extends Fragment implements View.OnClickListener
     public MenuKantinFragment() {
     }
 
-
     public static MenuKantinFragment newInstance() {
         MenuKantinFragment fragment = new MenuKantinFragment();
         return fragment;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater,
-                             ViewGroup container,
-                             Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_menu_kantin, container, false);
         initUI(view);
         return view;
@@ -48,17 +42,12 @@ public class MenuKantinFragment extends Fragment implements View.OnClickListener
         mTransactionCard = view.findViewById(R.id.transactionCard);
         mTransactionCard.setOnClickListener(this);
 
-
-
         mReportCard = view.findViewById(R.id.reportCard);
         mReportCard.setOnClickListener(this);
 
-
         mQRImage1 = view.findViewById(R.id.qrImage1);
-        changeColor(getActivity(),mQRImage1);
-
         mReportImage = view.findViewById(R.id.reportImage);
-        changeColor(getActivity(),mReportImage);
+
     }
 
     @Override
@@ -73,7 +62,6 @@ public class MenuKantinFragment extends Fragment implements View.OnClickListener
                 intent = new Intent(getActivity(), CanteenReportActivity.class);
                 startActivity(intent);
                 break;
-
             default:
                 break;
         }

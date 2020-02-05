@@ -15,14 +15,13 @@ import dev.sofie.messhalkantin.R;
 import dev.sofie.messhalkantin.ui.report.MesshallReportActivity;
 import dev.sofie.messhalkantin.ui.transaction.MesshallTransactionActivity;
 
-import static dev.sofie.messhalkantin.helper.ChangePNGColor.changeColor;
-
 
 public class MenuMesshallFragment extends Fragment implements View.OnClickListener {
-    public static final  String MESSHALL_TRANSACTION = "messhall";
+    public static final  String MESSHALL_SBM = "sbm";
+    public static final  String MESSHALL_MALLOMO = "mallomo";
 
-    private ImageView qrImage,reportImage;
-    private CardView transactionCard,reportCard;
+
+    private CardView transactionCard,reportCard,sbmCard;
     private Intent intent;
 
     public MenuMesshallFragment() {
@@ -44,11 +43,9 @@ public class MenuMesshallFragment extends Fragment implements View.OnClickListen
     }
 
     private  void initUI(View view){
-        qrImage = view.findViewById(R.id.qrImage);
-        reportImage = view.findViewById(R.id.reportImage);
-        changeColor(getActivity(),qrImage);
-        changeColor(getActivity(),reportImage);
 
+        sbmCard = view.findViewById(R.id.sbmCard);
+        sbmCard.setOnClickListener(this);
         reportCard = view.findViewById(R.id.reportCard);
         reportCard.setOnClickListener(this);
 
@@ -67,7 +64,12 @@ public class MenuMesshallFragment extends Fragment implements View.OnClickListen
                 break;
             case R.id.transactionCard:
                 intent = new Intent(getActivity(), MesshallTransactionActivity.class);
-                intent.putExtra(MesshallTransactionActivity.TRANSACTION_TYPE,MESSHALL_TRANSACTION);
+                intent.putExtra(MesshallTransactionActivity.TRANSACTION_TYPE,MESSHALL_MALLOMO);
+                startActivity(intent);
+                break;
+            case R.id.sbmCard:
+                intent = new Intent(getActivity(), MesshallTransactionActivity.class);
+                intent.putExtra(MesshallTransactionActivity.TRANSACTION_TYPE,MESSHALL_SBM);
                 startActivity(intent);
                 break;
 

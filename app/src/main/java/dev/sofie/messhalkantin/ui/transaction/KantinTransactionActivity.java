@@ -1,6 +1,8 @@
 package dev.sofie.messhalkantin.ui.transaction;
 
+import android.content.Context;
 import android.content.Intent;
+import android.hardware.Camera;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,14 +19,15 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import dev.sofie.messhalkantin.R;
+import dev.sofie.messhalkantin.helper.UIHelper;
 import dev.sofie.messhalkantin.service.ApiRepository;
 
 public class KantinTransactionActivity extends AppCompatActivity implements View.OnClickListener {
     public  static final String USER_INTERN = "intern";
     public  static final String USER_EMPLOYEE = "employee";
-    public  static CardView errorCard, successCard, cardView;
-    private Button buttonScan, kembaliBtn, submit, tidak;
-    public  static TextView nama, nik, kasbonTxt, successTxt, errorTxt;
+    public  static CardView  statusCard, cardView;
+    private Button frontCameraBtn,backCameraBtn, kembaliBtn, submit, tidak;
+    public  static TextView nama, nik, kasbonTxt, statusTxt;
     private static ProgressBar loading;
     private IntentIntegrator qrScan;
     private EditText kasbon;
@@ -32,6 +35,7 @@ public class KantinTransactionActivity extends AppCompatActivity implements View
     private ApiRepository repository;
     public  static String qrcode = "";
     private String keterangan = "";
+    private static Context mContext;
 
     private void initUI() {
 
@@ -70,27 +74,31 @@ public class KantinTransactionActivity extends AppCompatActivity implements View
         });
         kasbon = findViewById(R.id.kasbon);
         loading = findViewById(R.id.progressBar);
-        errorCard = findViewById(R.id.errorCard);
-        successCard = findViewById(R.id.successCard);
+        statusCard = findViewById(R.id.statusCard);
+
         cardView = findViewById(R.id.cardview);
-        successTxt = findViewById(R.id.successTxt);
-        errorTxt = findViewById(R.id.errorTxt);
+
 
         nama = findViewById(R.id.nama);
         nik = findViewById(R.id.nik);
+        statusTxt = findViewById(R.id.statusTxt);
 
         submit = findViewById(R.id.submit);
         tidak = findViewById(R.id.no);
-        buttonScan = findViewById(R.id.buttonScan);
+        frontCameraBtn = findViewById(R.id.frontCameraBtn);
+        backCameraBtn = findViewById(R.id.backCameraBtn);
         kembaliBtn = findViewById(R.id.kembali);
-
 
         qrScan = new IntentIntegrator(this);
         qrScan.setOrientationLocked(false);
+        qrScan.setBeepEnabled(true);
+        qrScan.addExtra("PROMPT_MESSAGE","");
+
         submit.setOnClickListener(this);
         tidak.setOnClickListener(this);
         kembaliBtn.setOnClickListener(this);
-        buttonScan.setOnClickListener(this);
+        frontCameraBtn.setOnClickListener(this);
+        backCameraBtn.setOnClickListener(this);
 
     }
 
@@ -98,15 +106,12 @@ public class KantinTransactionActivity extends AppCompatActivity implements View
     public static void isLoading(boolean b) {
         if (b) {
             loading.setVisibility(View.VISIBLE);
-            errorCard.setVisibility(View.GONE);
-            successCard.setVisibility(View.GONE);
+            statusCard.setVisibility(View.GONE);
             cardView.setVisibility(View.GONE);
             return;
         }
         loading.setVisibility(View.GONE);
-
     }
-
 
     private String userType(String nik) {
         int length = nik.length();
@@ -122,6 +127,7 @@ public class KantinTransactionActivity extends AppCompatActivity implements View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction_kantin);
+        mContext = this;
         repository = ApiRepository.getInstance(this);
         initUI();
 
@@ -135,7 +141,7 @@ public class KantinTransactionActivity extends AppCompatActivity implements View
 
             } else {
                 String id = result.getContents();
-                showError("Transaksi Dibatalkan !");
+                showStatus(false,"Transaksi Dibatalkan !");
                 switch (userType(id)) {
                     case USER_EMPLOYEE:
                         qrcode = id;
@@ -146,7 +152,7 @@ public class KantinTransactionActivity extends AppCompatActivity implements View
                         repository.magangTransaction(id);
                         break;
                     default:
-                        showError("Tipe User Tidak Ditemukan !");
+                        showStatus(false,"Tipe User Tidak Ditemukan !");
                         break;
                 }
 
@@ -156,21 +162,9 @@ public class KantinTransactionActivity extends AppCompatActivity implements View
         }
     }
 
-    public static void showError(String message){
-        errorCard.setVisibility(View.VISIBLE);
-        errorTxt.setText(message);
-        successCard.setVisibility(View.GONE);
-        cardView.setVisibility(View.GONE);
+    public static void showStatus(boolean status, String message){
+        UIHelper.showStatus(statusCard,statusTxt,message,mContext,status);
     }
-
-    public static void showSuccess(String message){
-        errorCard.setVisibility(View.GONE);
-        successTxt.setText(message);
-        successCard.setVisibility(View.VISIBLE);
-        cardView.setVisibility(View.GONE);
-    }
-
-
 
     private void clearTextView() {
         nama.setText("-");
@@ -183,7 +177,12 @@ public class KantinTransactionActivity extends AppCompatActivity implements View
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.buttonScan:
+            case R.id.frontCameraBtn:
+                qrScan.setCameraId(Camera.CameraInfo.CAMERA_FACING_FRONT);
+                qrScan.initiateScan();
+                break;
+            case R.id.backCameraBtn:
+                qrScan.setCameraId(Camera.CameraInfo.CAMERA_FACING_BACK);
                 qrScan.initiateScan();
                 break;
             case R.id.kembali:
@@ -198,7 +197,7 @@ public class KantinTransactionActivity extends AppCompatActivity implements View
                 break;
             case R.id.no:
                 clearTextView();
-                showError("Transaksi telah dibatalkan");
+                showStatus(false,"Transaksi telah dibatalkan");
                 break;
             default:
                 break;

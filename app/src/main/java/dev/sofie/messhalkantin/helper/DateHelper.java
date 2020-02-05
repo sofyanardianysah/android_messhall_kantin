@@ -21,7 +21,7 @@ public class DateHelper {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         try {
-            return new SimpleDateFormat("dd MMMM yyyy").format(dateFormat.parse(time));
+            return new SimpleDateFormat("dd MMM yyyy").format(dateFormat.parse(time));
         } catch (ParseException e) {
             return result;
         }catch (Exception e){
@@ -35,9 +35,5 @@ public class DateHelper {
         return new SimpleDateFormat("d MMM Y").format(new Date());
     }
 
-    public static String getDateNow(){
-        Calendar calendar = Calendar.getInstance();
-        Date date = calendar.getTime();
-        return new SimpleDateFormat("Y-M-d").format(date);
-    }
+
 }

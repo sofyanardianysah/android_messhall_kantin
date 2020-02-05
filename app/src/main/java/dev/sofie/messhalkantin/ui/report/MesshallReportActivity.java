@@ -2,6 +2,7 @@ package dev.sofie.messhalkantin.ui.report;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
@@ -34,15 +35,17 @@ public class MesshallReportActivity extends AppCompatActivity implements View.On
     private TextView karyawan,magang;
     private static TextView statusTxt;
     private ApiRepository repository;
+    final String[] tanggal = {""};
+    private  static Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messhall_report);
         initUI();
+        mContext = this;
         repository = ApiRepository.getInstance(this);
         preferecesHelper = SharedPreferecesHelper.newInstance(this);
         messhallReportVM = ViewModelProviders.of( this).get(MesshallReportVM.class);
-
         messhallReportVM.getOverview(getApplicationContext(),preferecesHelper.getUserID(),dateOnlyNow()).observe(this,overviewObserver);
 
     }
@@ -62,7 +65,6 @@ public class MesshallReportActivity extends AppCompatActivity implements View.On
         guestBtn = findViewById(R.id.guestBtn);
         guestBtn.setOnClickListener(this);
     }
-
 
     @Override
     public void onClick(View v) {
@@ -97,7 +99,7 @@ public class MesshallReportActivity extends AppCompatActivity implements View.On
     }
 
     public static void showStatus(boolean status, String message){
-        UIHelper.showStatus(statusCard,statusTxt,message,status);
+        UIHelper.showStatus(statusCard,statusTxt,message,mContext,status);
     }
 
     public Observer overviewObserver = new Observer<Overview>() {
@@ -108,7 +110,7 @@ public class MesshallReportActivity extends AppCompatActivity implements View.On
         }
     };
 
-    final String[] tanggal = {""};
+
     public void spinnerDatePickerMonthYear(final String user){
 
         Calendar c = Calendar.getInstance();

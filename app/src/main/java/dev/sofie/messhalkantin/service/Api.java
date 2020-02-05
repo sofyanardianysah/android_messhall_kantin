@@ -15,17 +15,18 @@ import retrofit2.http.Query;
 
 public interface Api {
 
+    /** AUTH **/
+
     @POST("messhall/login")
     Call<ApiResponse<User>> login(@Query("email") String nik,
                                   @Query("password") String password);
 
 
-    // API FOR MESSHALL
+    /** API FOR MESSHALL **/
 
     @GET("messhall/overview")
     Call<ApiResponse<Overview>> getOverviewMesshall(@Query("id_akun")String id,
                                                     @Query("bulan")String bulan);
-
 
     @POST("messhall/transaction/guest")
     Call<ApiResponse<Guest>> guestTransaction(@Query("nit") String nit,
@@ -41,10 +42,10 @@ public interface Api {
 
     @GET("messhall/report")
     Call<ApiResponse<List<Report>>> reportMesshall(@Query("bulan")String bulan,
-                                             @Query("user")String user);
+                                                    @Query("user")String user);
 
 
-    // API FOR KANTIN
+    /** API FOR KANTIN **/
 
     @GET("kantin/overview")
     Call<ApiResponse<Overview>> getKantinOverview(@Query("id_akun")String id,
