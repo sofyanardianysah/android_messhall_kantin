@@ -13,13 +13,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import dev.sofie.messhalkantin.R;
+import dev.sofie.messhalkantin.ui.pengaturan.PengaturanActivity;
 import dev.sofie.messhalkantin.ui.report.CanteenReportActivity;
 import dev.sofie.messhalkantin.ui.transaction.KantinTransactionActivity;
 
 
 
 public class MenuKantinFragment extends Fragment implements View.OnClickListener {
-    private CardView mTransactionCard,mReportCard;
+    private CardView mTransactionCard,mReportCard,ubahPasswordCard;
     private ImageView mQRImage1,mReportImage;
     private Intent intent;
 
@@ -48,6 +49,8 @@ public class MenuKantinFragment extends Fragment implements View.OnClickListener
         mQRImage1 = view.findViewById(R.id.qrImage1);
         mReportImage = view.findViewById(R.id.reportImage);
 
+        ubahPasswordCard = view.findViewById(R.id.ubahPasswordCard);
+        ubahPasswordCard.setOnClickListener(this);
     }
 
     @Override
@@ -60,6 +63,10 @@ public class MenuKantinFragment extends Fragment implements View.OnClickListener
 
             case R.id.reportCard:
                 intent = new Intent(getActivity(), CanteenReportActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.ubahPasswordCard:
+                intent = new Intent(getActivity(), PengaturanActivity.class);
                 startActivity(intent);
                 break;
             default:

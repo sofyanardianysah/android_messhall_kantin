@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import dev.sofie.messhalkantin.R;
+import dev.sofie.messhalkantin.ui.pengaturan.PengaturanActivity;
 import dev.sofie.messhalkantin.ui.report.MesshallReportActivity;
 import dev.sofie.messhalkantin.ui.transaction.MesshallTransactionActivity;
 
@@ -21,7 +22,7 @@ public class MenuMesshallFragment extends Fragment implements View.OnClickListen
     public static final  String MESSHALL_MALLOMO = "mallomo";
 
 
-    private CardView transactionCard,reportCard,sbmCard;
+    private CardView transactionCard,reportCard,sbmCard,ubahPasswordCard;
     private Intent intent;
 
     public MenuMesshallFragment() {
@@ -52,6 +53,8 @@ public class MenuMesshallFragment extends Fragment implements View.OnClickListen
         transactionCard = view.findViewById(R.id.transactionCard);
         transactionCard.setOnClickListener(this);
 
+        ubahPasswordCard = view.findViewById(R.id.ubahPasswordCard);
+        ubahPasswordCard.setOnClickListener(this);
 
     }
 
@@ -70,6 +73,10 @@ public class MenuMesshallFragment extends Fragment implements View.OnClickListen
             case R.id.sbmCard:
                 intent = new Intent(getActivity(), MesshallTransactionActivity.class);
                 intent.putExtra(MesshallTransactionActivity.TRANSACTION_TYPE,MESSHALL_SBM);
+                startActivity(intent);
+                break;
+            case R.id.ubahPasswordCard:
+                intent = new Intent(getActivity(), PengaturanActivity.class);
                 startActivity(intent);
                 break;
 

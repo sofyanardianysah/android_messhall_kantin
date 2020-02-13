@@ -21,6 +21,7 @@ import dev.sofie.messhalkantin.model.Report;
 import dev.sofie.messhalkantin.model.User;
 import dev.sofie.messhalkantin.ui.LoginActivity;
 import dev.sofie.messhalkantin.ui.MainActivity;
+import dev.sofie.messhalkantin.ui.pengaturan.PengaturanActivity;
 import dev.sofie.messhalkantin.ui.report.CanteenReportActivity;
 import dev.sofie.messhalkantin.ui.report.MesshallReportActivity;
 import dev.sofie.messhalkantin.ui.transaction.KantinTransactionActivity;
@@ -81,6 +82,27 @@ public class ApiRepository {
         });
     }
 
+    public void ubahPassword(String id, String password,String passwordBaru) {
+        PengaturanActivity.showLoading(true);
+        api.ubahPassword(id,password, passwordBaru).enqueue(new Callback<ApiResponse>() {
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                PengaturanActivity.showLoading(false);
+                if (!response.isSuccessful()) {
+                    Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+                } else if ((response.body()).getStatus().booleanValue()) {
+                    PengaturanActivity.clearForm();
+                    Toast.makeText(context,response.body().getMsg(),Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(context, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
+                PengaturanActivity.showLoading(false);
+                Toast.makeText(context,"Internal Server Error !",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     /**
      * Report

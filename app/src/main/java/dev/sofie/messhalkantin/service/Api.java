@@ -21,6 +21,10 @@ public interface Api {
     Call<ApiResponse<User>> login(@Query("email") String nik,
                                   @Query("password") String password);
 
+    @POST("ubahpassword")
+    Call<ApiResponse> ubahPassword(@Query("id") String id,
+                                   @Query("password") String password,
+                                   @Query("password_baru") String passwordBaru);
 
     /** API FOR MESSHALL **/
 

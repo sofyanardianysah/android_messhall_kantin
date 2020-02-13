@@ -72,6 +72,7 @@
             android:id="@+id/password_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            sweet:passwordToggleEnabled="true"
             sweet:layout_constraintEnd_toEndOf="parent"
             sweet:layout_constraintStart_toStartOf="parent"
             sweet:layout_constraintTop_toBottomOf="@+id/nik_layout">

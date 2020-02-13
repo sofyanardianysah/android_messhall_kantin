@@ -23,7 +23,8 @@ import dev.sofie.messhalkantin.ui.menu.MenuMesshallFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     SharedPreferecesHelper preferecesHelper;
-    private static final int CAMERA_PERMISSION_CODE = 100;
+    private static final int PERMISSION_REQUEST = 100;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,15 +32,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         preferecesHelper = SharedPreferecesHelper.newInstance(getApplicationContext());
         initUI();
 
-        checkPermission(Manifest.permission.CAMERA, CAMERA_PERMISSION_CODE);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
+        checkPermission();
 
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-
-            return;
-        }
     }
 
 
@@ -87,19 +81,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    protected void checkPermission(){
+        if(ContextCompat.checkSelfPermission(MainActivity.this,Manifest.permission.CAMERA)
+                + ContextCompat.checkSelfPermission(MainActivity.this,Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED){
 
-    // Function to check and request permission.
-    public void checkPermission(String permission, int requestCode)
-    {
-        if (ContextCompat.checkSelfPermission(MainActivity.this, permission)
-                == PackageManager.PERMISSION_DENIED) {
+            // Do something, when permissions not granted
+            if(ActivityCompat.shouldShowRequestPermissionRationale(
+                    MainActivity.this,Manifest.permission.CAMERA)
+                    || ActivityCompat.shouldShowRequestPermissionRationale(
+                    MainActivity.this,Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+                // If we should give explanation of requested permissions
 
-            // Requesting the permission
-            ActivityCompat.requestPermissions(MainActivity.this,
-                    new String[] { permission },
-                    requestCode);
+                ActivityCompat.requestPermissions(MainActivity.this,
+                        new String[]{
+                                Manifest.permission.CAMERA,
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE
+                        },
+                        PERMISSION_REQUEST
+                );
+            }else{
+                // Directly request for required permissions, without explanation
+                ActivityCompat.requestPermissions(
+                        MainActivity.this,
+                        new String[]{
+                                Manifest.permission.CAMERA,
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE
+                        },
+                        PERMISSION_REQUEST
+                );
+            }
+        }else {
+            // Do something, when permissions are already granted
+//            Toast.makeText(mContext,"Permissions already granted",Toast.LENGTH_SHORT).show();
         }
-
     }
 
     @Override
@@ -108,18 +123,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                            @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if (requestCode == CAMERA_PERMISSION_CODE) {
-            if (grantResults.length > 0
-                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(MainActivity.this,
-                        "Camera Permission Granted",
-                        Toast.LENGTH_SHORT)
-                        .show();
-            } else {
-                Toast.makeText(MainActivity.this,
-                        "Camera Permission Denied",
-                        Toast.LENGTH_SHORT)
-                        .show();
+        switch (requestCode){
+            case PERMISSION_REQUEST:{
+                // When request is cancelled, the results array are empty
+                if(
+                        (grantResults.length >0) && (grantResults[0] + grantResults[1] == PackageManager.PERMISSION_GRANTED)
+                ){
+                    // Permissions are granted
+                    Toast.makeText(MainActivity.this,"Akses diperbolehkan.",Toast.LENGTH_SHORT).show();
+                }else {
+                    // Permissions are denied
+                    Toast.makeText(MainActivity.this,"Akses tidak diperbolehkan.",Toast.LENGTH_SHORT).show();
+                }
+                return;
             }
         }
     }

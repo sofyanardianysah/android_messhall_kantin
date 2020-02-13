@@ -10,43 +10,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49706814-c3b9-4413-8023-71c143633cd9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/pengaturan/PengaturanActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/lock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_pengaturan.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_9_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_9_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_9_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_9_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_journeyapps_zxing_android_embedded_3_4_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_journeyapps_zxing_android_embedded_3_4_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/helper/ChangePNGColor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/helper/DateHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/helper/DateHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/helper/Excel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/helper/ExcelHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/helper/MoneyConvert.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/helper/MoneyHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/helper/SharedPreferecesHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/helper/SharedPreferecesHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/helper/UIHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/helper/UIHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/service/Api.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/service/Api.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/service/ApiRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/service/ApiRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/menu/MenuKantinFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/menu/MenuKantinFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/menu/MenuMesshallFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/menu/MenuMesshallFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/report/CanteenReportActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/report/CanteenReportActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/report/MesshallReportActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/report/MesshallReportActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/transaction/KantinTransactionActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/transaction/KantinTransactionActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/transaction/MesshallTransactionActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/transaction/MesshallTransactionActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_canteen_report.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_canteen_report.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_messhall_report.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_messhall_report.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_transaction_kantin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_transaction_kantin.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_transaction_messhall.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_transaction_messhall.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_menu_kantin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_menu_kantin.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_menu_messhall.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_menu_messhall.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +49,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="3b1dcbaa7d24" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_5X_API_25" />
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
@@ -70,64 +62,27 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/service/ApiRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="603">
-              <caret line="380" column="5" lean-forward="true" selection-start-line="380" selection-start-column="5" selection-end-line="380" selection-end-column="5" />
+            <state relative-caret-position="333">
+              <caret line="93" column="94" selection-start-line="93" selection-start-column="94" selection-end-line="93" selection-end-column="94" />
               <folding>
                 <element signature="method#ApiRepository#0;class#ApiRepository#0" />
                 <element signature="method#getInstance#0;class#ApiRepository#0" />
                 <element signature="e#1630#1825#1" />
                 <element signature="docComment;method#login#0;class#ApiRepository#0" />
                 <element signature="method#login#0;class#ApiRepository#0" />
-                <element signature="class#2016:3114" />
-                <element signature="method#onResponse#0;class#2016:3114" />
-                <element signature="e#2200#2365#1" />
-                <element signature="e#2421#2676#1" />
-                <element signature="e#2682#2852#1" />
-                <element signature="method#onFailure#0;class#2016:3114" />
                 <element signature="docComment;method#kantinReport#0;class#ApiRepository#0" />
                 <element signature="method#kantinReport#0;class#ApiRepository#0" />
                 <element signature="method#messhallReport#0;class#ApiRepository#0" />
-                <element signature="e#4178#4965#1" />
-                <element signature="e#4233#4831#1" />
-                <element signature="e#4480#4634#1" />
-                <element signature="e#4638#4777#1" />
-                <element signature="method#onFailure#0;class#3915:5380" />
                 <element signature="docComment;method#guestTransaction#0;class#ApiRepository#0" />
                 <element signature="method#guestTransaction#0;class#ApiRepository#0" />
-                <element signature="method#onFailure#0;class#5589:6533" />
                 <element signature="method#userTransactionMesshall#0;class#ApiRepository#0" />
                 <element signature="method#extraTransactionMesshall#0;class#ApiRepository#0" />
-                <element signature="method#onFailure#0;class#8599:10264" />
                 <element signature="method#magangTransaction#0;class#ApiRepository#0" />
-                <element signature="class#10422:11373" />
-                <element signature="e#10671#11010#1" />
-                <element signature="e#10726#10874#1" />
-                <element signature="method#onFailure#0;class#10422:11373" />
                 <element signature="method#userTransaction#0;class#ApiRepository#0" />
-                <element signature="class#11532:12757" />
-                <element signature="method#onResponse#0;class#11532:12757" />
-                <element signature="e#11775#12396#1" />
-                <element signature="e#11830#12260#1" />
-                <element signature="method#onFailure#0;class#11532:12757" />
                 <element signature="method#userAddTransaction#0;class#ApiRepository#0" />
-                <element signature="class#12968:13957" />
-                <element signature="method#onResponse#0;class#12968:13957" />
-                <element signature="e#13210#13549#1" />
-                <element signature="e#13265#13413#1" />
-                <element signature="method#onFailure#0;class#12968:13957" />
                 <element signature="docComment;method#getMesshallOverview#0;class#ApiRepository#0" />
                 <element signature="method#getMesshallOverview#0;class#ApiRepository#0" />
-                <element signature="class#14253:15189" />
-                <element signature="method#onResponse#0;class#14253:15189" />
-                <element signature="e#14504#14827#1" />
-                <element signature="e#14559#14683#1" />
-                <element signature="method#onFailure#0;class#14253:15189" />
                 <element signature="method#getKantinOverview#0;class#ApiRepository#0" />
-                <element signature="class#15479:16413" />
-                <element signature="method#onResponse#0;class#15479:16413" />
-                <element signature="e#15729#16052#1" />
-                <element signature="e#15784#15908#1" />
-                <element signature="method#onFailure#0;class#15479:16413" />
               </folding>
             </state>
           </provider>
@@ -136,19 +91,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/service/Api.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="42" column="27" lean-forward="true" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
+            <state relative-caret-position="210">
+              <caret line="25" column="35" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_canteen_report.xml">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_transaction_kantin.xml">
           <provider editor-type-id="text-editor">
-            <state relative-caret-position="593">
-              <caret line="288" selection-start-line="288" selection-end-line="288" />
+            <state relative-caret-position="840">
+              <caret line="56" selection-start-line="56" selection-end-line="56" />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_menu_kantin.xml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="1546">
+              <caret line="242" column="72" selection-start-line="242" selection-start-column="72" selection-end-line="242" selection-end-column="72" />
               <folding>
-                <element signature="e#11515#13221#0" />
+                <element signature="e#7785#10974#0" />
               </folding>
             </state>
           </provider>
@@ -156,13 +121,53 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_transaction_messhall.xml">
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="97" />
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_menu_messhall.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="297" lean-forward="true" selection-start-line="230" selection-start-column="8" selection-end-line="297" />
               <folding>
-                <element signature="e#1743#2169#0" />
-                <element signature="e#2175#4079#0" />
+                <element signature="e#10889#14081#0" />
+              </folding>
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/menu/MenuMesshallFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="565">
+              <caret line="55" column="6" lean-forward="true" selection-start-line="55" selection-start-column="6" selection-end-line="56" selection-end-column="50" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/menu/MenuKantinFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="343">
+              <caret line="52" column="50" selection-start-line="52" selection-start-column="50" selection-end-line="52" selection-end-column="50" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#MenuKantinFragment#0;class#MenuKantinFragment#0" />
+                <element signature="method#newInstance#0;class#MenuKantinFragment#0" />
+                <element signature="method#onCreateView#0;class#MenuKantinFragment#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_pengaturan.xml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="149" column="36" lean-forward="true" selection-start-line="149" selection-start-column="36" selection-end-line="149" selection-end-column="36" />
+              <folding>
+                <element signature="e#376#851#0" />
+                <element signature="e#857#6563#0" />
               </folding>
             </state>
           </provider>
@@ -170,53 +175,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_transaction_kantin.xml">
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="56" selection-start-line="56" selection-end-line="56" />
-              <folding>
-                <element signature="e#425#2605#0" />
-              </folding>
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="android-designer2" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_messhall_report.xml">
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="97" lean-forward="true" selection-start-line="58" selection-start-column="4" selection-end-line="97" />
-              <folding>
-                <element signature="e#2512#4219#0" />
-              </folding>
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="android-designer2" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/transaction/KantinTransactionActivity.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/pengaturan/PengaturanActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="622">
-              <caret line="151" column="52" selection-start-line="151" selection-start-column="35" selection-end-line="151" selection-end-column="52" />
+            <state relative-caret-position="595">
+              <caret line="54" column="13" lean-forward="true" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
               <folding>
-                <element signature="method#isLoading#0;class#KantinTransactionActivity#0" />
-                <element signature="method#userType#0;class#KantinTransactionActivity#0" />
-                <element signature="method#clearTextView#0;class#KantinTransactionActivity#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/transaction/MesshallTransactionActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="147" column="63" selection-start-line="147" selection-start-column="55" selection-end-line="147" selection-end-column="63" />
-              <folding>
-                <element signature="method#initUI#0;class#MesshallTransactionActivity#0" />
-                <element signature="method#clearTextView#0;class#MesshallTransactionActivity#0" />
+                <element signature="e#1898#2017#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -236,12 +200,16 @@
       <find>totalLembur</find>
       <find>Report</find>
       <find>messhallReport</find>
-      <find>spinnerDatePickerMonthYear</find>
       <find>zxin</find>
       <find>fron</find>
       <find>TRANSACTION_TYPE</find>
       <find>messhall</find>
+      <find>spinnerDatePickerMonthYear</find>
+      <find>logout</find>
     </findStrings>
+    <replaceStrings>
+      <replace>kembali</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -258,41 +226,48 @@
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/model/Report.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/menu/MenuKantinFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/helper/SharedPreferecesHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/helper/Excel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/report/MesshallReportActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/helper/UIHelper.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/transaction/KantinTransactionActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/report/CanteenReportActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/helper/DateHelper.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/service/ApiRepository.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_menu_messhall.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/menu/MenuMesshallFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_messhall_report.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_canteen_report.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_free_breakfast_24px.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_transaction_kantin.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/transaction/KantinTransactionActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/report/CanteenReportActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/report/MesshallReportActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/transaction/MesshallTransactionActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_transaction_messhall.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/service/Api.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_messhall_report.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_canteen_report.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_transaction_kantin.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_free_breakfast_24px.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_menu_messhall.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_pengaturan.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_pengaturan.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/pengaturan/PengaturanFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/service/ApiRepository.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/menu/MenuMesshallFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/menu/MenuKantinFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_menu_kantin.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/pengaturan/PengaturanActivity.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="471" />
-    <option name="y" value="60" />
-    <option name="width" value="1581" />
-    <option name="height" value="1262" />
+    <option name="x" value="674" />
+    <option name="y" value="126" />
+    <option name="width" value="1275" />
+    <option name="height" value="1258" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -303,6 +278,11 @@
             <path>
               <item name="Messhal Kantin" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="manifests" type="f94875db:AndroidManifestsGroupNode" />
+            </path>
+            <path>
+              <item name="Messhal Kantin" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
             </path>
             <path>
@@ -310,13 +290,6 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="messhalkantin" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Messhal Kantin" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="messhalkantin" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="helper" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Messhal Kantin" type="1abcf292:AndroidViewProjectNode" />
@@ -346,7 +319,7 @@
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="messhalkantin" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="transaction" type="462c0819:PsiDirectoryNode" />
+              <item name="pengaturan" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Messhal Kantin" type="1abcf292:AndroidViewProjectNode" />
@@ -363,14 +336,7 @@
               <item name="Messhal Kantin" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="mipmap" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-            <path>
-              <item name="Messhal Kantin" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="mipmap" type="ddeffd01:AndroidResFolderTypeNode" />
-              <item name="ic_launcher_round" type="c431d0b8:AndroidResGroupNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
             <path>
               <item name="Messhal Kantin" type="1abcf292:AndroidViewProjectNode" />
@@ -380,15 +346,28 @@
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
+    </key>
+    <key name="android.template.packageName">
+      <recent name="dev.sofie.messhalkantin.ui.pengaturan" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="dev.sofie.messhalkantin.ui.pengaturan" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -514,10 +493,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="471" y="60" width="1581" height="1262" extended-state="0" />
+    <frame x="674" y="126" width="1275" height="1258" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.22871995" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.28548256" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -530,7 +510,7 @@
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Terminal" order="3" />
       <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="5" visible="true" weight="0.36153847" />
+      <window_info anchor="bottom" id="Build" order="5" visible="true" weight="0.36277872" />
       <window_info anchor="bottom" id="Android Profiler" order="6" />
       <window_info anchor="bottom" id="Run" order="7" weight="0.32905984" />
       <window_info anchor="bottom" id="Debug" order="8" />
@@ -583,7 +563,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/transaction/KantinTransactionActivity.java</url>
-          <line>195</line>
+          <line>199</line>
           <properties class="dev.sofie.messhalkantin.ui.transaction.KantinTransactionActivity">
             <option name="EMULATED" value="true" />
           </properties>
@@ -591,7 +571,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/transaction/MesshallTransactionActivity.java</url>
-          <line>141</line>
+          <line>148</line>
           <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
@@ -661,13 +641,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="31" column="12" lean-forward="true" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -688,14 +661,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="48" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -727,21 +692,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/menu/MenuKantinFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="3" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#MenuKantinFragment#0;class#MenuKantinFragment#0" />
-            <element signature="method#newInstance#0;class#MenuKantinFragment#0" />
-            <element signature="method#onCreateView#0;class#MenuKantinFragment#0" />
-            <element signature="method#initUI#0;class#MenuKantinFragment#0" />
-            <element signature="method#onClick#0;class#MenuKantinFragment#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/helper/DateHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -749,173 +699,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/report/CanteenReportActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="48" column="48" selection-start-line="48" selection-start-column="48" selection-end-line="48" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/report/MesshallReportActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="982">
-          <caret line="100" column="4" selection-start-line="100" selection-start-column="4" selection-end-line="102" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_menu_messhall.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="110" column="62" selection-start-line="110" selection-start-column="62" selection-end-line="110" selection-end-column="62" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/menu/MenuMesshallFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="874">
-          <caret line="71" column="89" selection-start-line="71" selection-start-column="89" selection-end-line="71" selection-end-column="89" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/transaction/MesshallTransactionActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="147" column="63" selection-start-line="147" selection-start-column="55" selection-end-line="147" selection-end-column="63" />
-          <folding>
-            <element signature="method#initUI#0;class#MesshallTransactionActivity#0" />
-            <element signature="method#clearTextView#0;class#MesshallTransactionActivity#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/transaction/KantinTransactionActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="622">
-          <caret line="151" column="52" selection-start-line="151" selection-start-column="35" selection-end-line="151" selection-end-column="52" />
-          <folding>
-            <element signature="method#isLoading#0;class#KantinTransactionActivity#0" />
-            <element signature="method#userType#0;class#KantinTransactionActivity#0" />
-            <element signature="method#clearTextView#0;class#KantinTransactionActivity#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/service/ApiRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="603">
-          <caret line="380" column="5" lean-forward="true" selection-start-line="380" selection-start-column="5" selection-end-line="380" selection-end-column="5" />
-          <folding>
-            <element signature="method#ApiRepository#0;class#ApiRepository#0" />
-            <element signature="method#getInstance#0;class#ApiRepository#0" />
-            <element signature="e#1630#1825#1" />
-            <element signature="docComment;method#login#0;class#ApiRepository#0" />
-            <element signature="method#login#0;class#ApiRepository#0" />
-            <element signature="class#2016:3114" />
-            <element signature="method#onResponse#0;class#2016:3114" />
-            <element signature="e#2200#2365#1" />
-            <element signature="e#2421#2676#1" />
-            <element signature="e#2682#2852#1" />
-            <element signature="method#onFailure#0;class#2016:3114" />
-            <element signature="docComment;method#kantinReport#0;class#ApiRepository#0" />
-            <element signature="method#kantinReport#0;class#ApiRepository#0" />
-            <element signature="method#messhallReport#0;class#ApiRepository#0" />
-            <element signature="e#4178#4965#1" />
-            <element signature="e#4233#4831#1" />
-            <element signature="e#4480#4634#1" />
-            <element signature="e#4638#4777#1" />
-            <element signature="method#onFailure#0;class#3915:5380" />
-            <element signature="docComment;method#guestTransaction#0;class#ApiRepository#0" />
-            <element signature="method#guestTransaction#0;class#ApiRepository#0" />
-            <element signature="method#onFailure#0;class#5589:6533" />
-            <element signature="method#userTransactionMesshall#0;class#ApiRepository#0" />
-            <element signature="method#extraTransactionMesshall#0;class#ApiRepository#0" />
-            <element signature="method#onFailure#0;class#8599:10264" />
-            <element signature="method#magangTransaction#0;class#ApiRepository#0" />
-            <element signature="class#10422:11373" />
-            <element signature="e#10671#11010#1" />
-            <element signature="e#10726#10874#1" />
-            <element signature="method#onFailure#0;class#10422:11373" />
-            <element signature="method#userTransaction#0;class#ApiRepository#0" />
-            <element signature="class#11532:12757" />
-            <element signature="method#onResponse#0;class#11532:12757" />
-            <element signature="e#11775#12396#1" />
-            <element signature="e#11830#12260#1" />
-            <element signature="method#onFailure#0;class#11532:12757" />
-            <element signature="method#userAddTransaction#0;class#ApiRepository#0" />
-            <element signature="class#12968:13957" />
-            <element signature="method#onResponse#0;class#12968:13957" />
-            <element signature="e#13210#13549#1" />
-            <element signature="e#13265#13413#1" />
-            <element signature="method#onFailure#0;class#12968:13957" />
-            <element signature="docComment;method#getMesshallOverview#0;class#ApiRepository#0" />
-            <element signature="method#getMesshallOverview#0;class#ApiRepository#0" />
-            <element signature="class#14253:15189" />
-            <element signature="method#onResponse#0;class#14253:15189" />
-            <element signature="e#14504#14827#1" />
-            <element signature="e#14559#14683#1" />
-            <element signature="method#onFailure#0;class#14253:15189" />
-            <element signature="method#getKantinOverview#0;class#ApiRepository#0" />
-            <element signature="class#15479:16413" />
-            <element signature="method#onResponse#0;class#15479:16413" />
-            <element signature="e#15729#16052#1" />
-            <element signature="e#15784#15908#1" />
-            <element signature="method#onFailure#0;class#15479:16413" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/service/Api.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="42" column="27" lean-forward="true" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_transaction_messhall.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="97" />
-          <folding>
-            <element signature="e#1743#2169#0" />
-            <element signature="e#2175#4079#0" />
-          </folding>
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_messhall_report.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="97" lean-forward="true" selection-start-line="58" selection-start-column="4" selection-end-line="97" />
-          <folding>
-            <element signature="e#2512#4219#0" />
-          </folding>
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_canteen_report.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="593">
-          <caret line="288" selection-start-line="288" selection-end-line="288" />
-          <folding>
-            <element signature="e#11515#13221#0" />
-          </folding>
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_free_breakfast_24px.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="43" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_free_breakfast_24px.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -923,16 +707,241 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_transaction_kantin.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_canteen_report.xml">
       <provider editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        <state relative-caret-position="4320">
+          <caret line="288" selection-start-line="288" selection-end-line="288" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="74" column="45" selection-start-line="74" selection-start-column="45" selection-end-line="74" selection-end-column="45" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="48" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/transaction/KantinTransactionActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="47" column="4" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="54" />
           <folding>
-            <element signature="e#425#2605#0" />
+            <element signature="method#isLoading#0;class#KantinTransactionActivity#0" />
+            <element signature="method#userType#0;class#KantinTransactionActivity#0" />
+            <element signature="method#onActivityResult#0;class#KantinTransactionActivity#0" />
+            <element signature="method#clearTextView#0;class#KantinTransactionActivity#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_messhall_report.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="97" selection-start-line="58" selection-start-column="4" selection-end-line="97" />
+          <folding>
+            <element signature="e#2512#4219#0" />
           </folding>
         </state>
       </provider>
       <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="54" />
+          <folding>
+            <element signature="method#onClick#0;class#MainActivity#0" />
+            <element signature="method#initUI#0;class#MainActivity#0" />
+            <element signature="method#loadFragment#0;class#MainActivity#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/report/CanteenReportActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="163" column="30" selection-start-line="163" selection-start-column="30" selection-end-line="163" selection-end-column="30" />
+          <folding>
+            <element signature="method#spinnerDatePickerMonthYear#0;class#CanteenReportActivity#0" />
+            <element signature="e#5077#5513#0" expanded="true" />
+            <element signature="e#5512#5513#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/report/MesshallReportActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="85" column="31" selection-start-line="85" selection-start-column="31" selection-end-line="85" selection-end-column="31" />
+          <folding>
+            <element signature="method#spinnerDatePickerMonthYear#0;class#MesshallReportActivity#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/transaction/MesshallTransactionActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="184" column="48" selection-start-line="184" selection-start-column="48" selection-end-line="184" selection-end-column="48" />
+          <folding>
+            <element signature="method#initUI#0;class#MesshallTransactionActivity#0" />
+            <element signature="method#clearTextView#0;class#MesshallTransactionActivity#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_transaction_messhall.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="50" selection-start-line="50" selection-end-line="97" />
+          <folding>
+            <element signature="e#1743#2169#0" />
+          </folding>
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/service/Api.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="25" column="35" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_pengaturan.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="182" lean-forward="true" selection-end-line="182" />
+          <folding>
+            <element signature="e#376#851#0" />
+            <element signature="e#857#6563#0" />
+            <element signature="e#6569#8284#0" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/service/ApiRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="93" column="94" selection-start-line="93" selection-start-column="94" selection-end-line="93" selection-end-column="94" />
+          <folding>
+            <element signature="method#ApiRepository#0;class#ApiRepository#0" />
+            <element signature="method#getInstance#0;class#ApiRepository#0" />
+            <element signature="e#1630#1825#1" />
+            <element signature="docComment;method#login#0;class#ApiRepository#0" />
+            <element signature="method#login#0;class#ApiRepository#0" />
+            <element signature="docComment;method#kantinReport#0;class#ApiRepository#0" />
+            <element signature="method#kantinReport#0;class#ApiRepository#0" />
+            <element signature="method#messhallReport#0;class#ApiRepository#0" />
+            <element signature="docComment;method#guestTransaction#0;class#ApiRepository#0" />
+            <element signature="method#guestTransaction#0;class#ApiRepository#0" />
+            <element signature="method#userTransactionMesshall#0;class#ApiRepository#0" />
+            <element signature="method#extraTransactionMesshall#0;class#ApiRepository#0" />
+            <element signature="method#magangTransaction#0;class#ApiRepository#0" />
+            <element signature="method#userTransaction#0;class#ApiRepository#0" />
+            <element signature="method#userAddTransaction#0;class#ApiRepository#0" />
+            <element signature="docComment;method#getMesshallOverview#0;class#ApiRepository#0" />
+            <element signature="method#getMesshallOverview#0;class#ApiRepository#0" />
+            <element signature="method#getKantinOverview#0;class#ApiRepository#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/pengaturan/PengaturanFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="46" column="3" selection-start-line="46" selection-start-column="3" selection-end-line="108" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/menu/MenuMesshallFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="565">
+          <caret line="55" column="6" lean-forward="true" selection-start-line="55" selection-start-column="6" selection-end-line="56" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/menu/MenuKantinFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="52" column="50" selection-start-line="52" selection-start-column="50" selection-end-line="52" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#MenuKantinFragment#0;class#MenuKantinFragment#0" />
+            <element signature="method#newInstance#0;class#MenuKantinFragment#0" />
+            <element signature="method#onCreateView#0;class#MenuKantinFragment#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_transaction_kantin.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_menu_messhall.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="297" lean-forward="true" selection-start-line="230" selection-start-column="8" selection-end-line="297" />
+          <folding>
+            <element signature="e#10889#14081#0" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_menu_kantin.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="1546">
+          <caret line="242" column="72" selection-start-line="242" selection-start-column="72" selection-end-line="242" selection-end-column="72" />
+          <folding>
+            <element signature="e#7785#10974#0" />
+          </folding>
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_pengaturan.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="149" column="36" lean-forward="true" selection-start-line="149" selection-start-column="36" selection-end-line="149" selection-end-column="36" />
+          <folding>
+            <element signature="e#376#851#0" />
+            <element signature="e#857#6563#0" />
+          </folding>
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/dev/sofie/messhalkantin/ui/pengaturan/PengaturanActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="54" column="13" lean-forward="true" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
+          <folding>
+            <element signature="e#1898#2017#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

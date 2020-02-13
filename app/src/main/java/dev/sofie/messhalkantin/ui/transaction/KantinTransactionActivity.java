@@ -1,7 +1,10 @@
 package dev.sofie.messhalkantin.ui.transaction;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.view.View;
@@ -11,9 +14,14 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -21,6 +29,7 @@ import com.google.zxing.integration.android.IntentResult;
 import dev.sofie.messhalkantin.R;
 import dev.sofie.messhalkantin.helper.UIHelper;
 import dev.sofie.messhalkantin.service.ApiRepository;
+import dev.sofie.messhalkantin.ui.MainActivity;
 
 public class KantinTransactionActivity extends AppCompatActivity implements View.OnClickListener {
     public  static final String USER_INTERN = "intern";
@@ -36,7 +45,7 @@ public class KantinTransactionActivity extends AppCompatActivity implements View
     public  static String qrcode = "";
     private String keterangan = "";
     private static Context mContext;
-
+    private static final int PERMISSION_REQUEST = 100;
     private void initUI() {
 
         transaksi = findViewById(R.id.transaksi);
@@ -177,13 +186,8 @@ public class KantinTransactionActivity extends AppCompatActivity implements View
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.frontCameraBtn:
-                qrScan.setCameraId(Camera.CameraInfo.CAMERA_FACING_FRONT);
-                qrScan.initiateScan();
-                break;
             case R.id.backCameraBtn:
-                qrScan.setCameraId(Camera.CameraInfo.CAMERA_FACING_BACK);
-                qrScan.initiateScan();
+                checkPermission();
                 break;
             case R.id.kembali:
                 finish();
@@ -201,6 +205,45 @@ public class KantinTransactionActivity extends AppCompatActivity implements View
                 break;
             default:
                 break;
+        }
+    }
+
+
+    protected void checkPermission(){
+        if(ContextCompat.checkSelfPermission(KantinTransactionActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+
+            // Do something, when permissions not granted
+            if(ActivityCompat.shouldShowRequestPermissionRationale(KantinTransactionActivity.this,Manifest.permission.CAMERA)){
+                // If we should give explanation of requested permissions
+                ActivityCompat.requestPermissions(KantinTransactionActivity.this, new String[]{Manifest.permission.CAMERA}, PERMISSION_REQUEST);
+            }else{
+                // Directly request for required permissions, without explanation
+                ActivityCompat.requestPermissions(KantinTransactionActivity.this,new String[]{Manifest.permission.CAMERA}, PERMISSION_REQUEST);
+            }
+        }else{
+            qrScan.setCameraId(Camera.CameraInfo.CAMERA_FACING_BACK);
+            qrScan.initiateScan();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        switch (requestCode){
+            case PERMISSION_REQUEST:{
+                // When request is cancelled, the results array are empty
+                if((grantResults.length >0) && (grantResults[0]  == PackageManager.PERMISSION_GRANTED)){
+                    qrScan.setCameraId(Camera.CameraInfo.CAMERA_FACING_BACK);
+                    qrScan.initiateScan();
+                    Toast.makeText(KantinTransactionActivity.this,"Akses diperbolehkan.",Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(KantinTransactionActivity.this,"Akses tidak diperbolehkan.",Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
         }
     }
 

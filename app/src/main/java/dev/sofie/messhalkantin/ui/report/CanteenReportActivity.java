@@ -1,8 +1,10 @@
 package dev.sofie.messhalkantin.ui.report;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
@@ -10,9 +12,13 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -24,6 +30,7 @@ import dev.sofie.messhalkantin.helper.SharedPreferecesHelper;
 import dev.sofie.messhalkantin.helper.UIHelper;
 import dev.sofie.messhalkantin.model.Overview;
 import dev.sofie.messhalkantin.service.ApiRepository;
+import dev.sofie.messhalkantin.ui.MainActivity;
 
 import static dev.sofie.messhalkantin.helper.DateHelper.dateOnlyNow;
 
@@ -41,6 +48,7 @@ public class CanteenReportActivity extends AppCompatActivity implements View.OnC
     private ApiRepository repository;
     final String[] tanggal = {""};
     private static Context mContext;
+    private static final int PERMISSION_REQUEST = 100;
 
     public static void isLoading(boolean status){
         if(status){
@@ -101,13 +109,19 @@ public class CanteenReportActivity extends AppCompatActivity implements View.OnC
                 finish();
                 break;
             case R.id.kasbonBtn:
-                spinnerDatePickerMonthYear("kasbon");
+                this.status = "kasbon";
+                checkPermission();
+//                spinnerDatePickerMonthYear("kasbon");
                 break;
             case R.id.magangBtn:
-                spinnerDatePickerMonthYear("anak magang");
+                this.status = "anak magang";
+                checkPermission();
+//                spinnerDatePickerMonthYear("anak magang");
                 break;
             case R.id.lemburBtn:
-                spinnerDatePickerMonthYear("lembur");
+                this.status = "lembur";
+                checkPermission();
+//                spinnerDatePickerMonthYear("lembur");
                 break;
         }
 
@@ -121,8 +135,8 @@ public class CanteenReportActivity extends AppCompatActivity implements View.OnC
 
         }
     };
-
-    public void spinnerDatePickerMonthYear(final String status){
+    public String status = "";
+    public void spinnerDatePickerMonthYear(){
 
         Calendar c = Calendar.getInstance();
         int mYear = c.get(Calendar.YEAR);
@@ -140,5 +154,56 @@ public class CanteenReportActivity extends AppCompatActivity implements View.OnC
                 }, mYear, mMonth, mDay);
         (datePickerDialog.getDatePicker()).findViewById(Resources.getSystem().getIdentifier("day", "id", "android")).setVisibility(View.GONE);
         datePickerDialog.show();
+    }
+
+
+    protected void checkPermission(){
+        if( ContextCompat.checkSelfPermission(CanteenReportActivity.this,Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED){
+
+            // Do something, when permissions not granted
+            if( ActivityCompat.shouldShowRequestPermissionRationale(
+                    CanteenReportActivity.this,Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+                // If we should give explanation of requested permissions
+
+                ActivityCompat.requestPermissions(CanteenReportActivity.this,
+                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        PERMISSION_REQUEST
+                );
+            }else{
+                // Directly request for required permissions, without explanation
+                ActivityCompat.requestPermissions(CanteenReportActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        PERMISSION_REQUEST
+                );
+            }
+        }else {
+            // Do something, when permissions are already granted
+            spinnerDatePickerMonthYear();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        switch (requestCode){
+            case PERMISSION_REQUEST:{
+                // When request is cancelled, the results array are empty
+                if(
+                        (grantResults.length >0) && (grantResults[0]  == PackageManager.PERMISSION_GRANTED)
+                ){
+                    spinnerDatePickerMonthYear();
+
+                    // Permissions are granted
+                    Toast.makeText(CanteenReportActivity.this,"Akses diperbolehkan.",Toast.LENGTH_SHORT).show();
+                }else {
+                    // Permissions are denied
+                    Toast.makeText(CanteenReportActivity.this,"Akses tidak diperbolehkan.",Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+        }
     }
 }
