@@ -16,6 +16,9 @@ public class User implements Parcelable {
             return new User[size];
         }
     };
+    @SerializedName("id_messhall")
+    @Expose
+    private Integer idMesshall;
     @SerializedName("aktif")
     @Expose
     private Integer aktif;
@@ -42,7 +45,6 @@ public class User implements Parcelable {
     private Object emailVerifiedAt;
     @SerializedName("id")
     @Expose
-
     /* renamed from: id */
     private Integer f100id;
     @SerializedName("jabatan")
@@ -65,6 +67,7 @@ public class User implements Parcelable {
     private Object updatedAt;
 
     protected User(Parcel in) {
+        this.idMesshall = (Integer)in.readValue(Integer.class.getClassLoader());
         this.f100id = (Integer) in.readValue(Integer.class.getClassLoader());
         this.nik = (String) in.readValue(String.class.getClassLoader());
         this.nama = (String) in.readValue(String.class.getClassLoader());
@@ -206,6 +209,7 @@ public class User implements Parcelable {
     }
 
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.idMesshall);
         dest.writeValue(this.f100id);
         dest.writeValue(this.nik);
         dest.writeValue(this.nama);
@@ -225,5 +229,13 @@ public class User implements Parcelable {
 
     public int describeContents() {
         return 0;
+    }
+
+    public Integer getIdMesshall() {
+        return idMesshall;
+    }
+
+    public void setIdMesshall(Integer idMesshall) {
+        this.idMesshall = idMesshall;
     }
 }

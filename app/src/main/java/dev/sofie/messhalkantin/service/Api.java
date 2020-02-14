@@ -34,40 +34,45 @@ public interface Api {
 
     @POST("messhall/transaction/guest")
     Call<ApiResponse<Guest>> guestTransaction(@Query("nit") String nit,
-                                              @Query("messhall") String messhall);
+                                              @Query("id_messhall") int idMesshall);
 
     @POST("messhall/transaction/user")
     Call<ApiResponse<User>> userTransactionMesshall(@Query("qrcode") String qrcode,
-                                                     @Query("messhall") String messhall);
+                                                    @Query("id_messhall") int idMesshall);
 
     @POST("messhall/transaction/extra")
     Call<ApiResponse<User>> extraTransaction(@Query("qrcode") String qrcode,
-                                              @Query("messhall") String messhall);
+                                             @Query("id_messhall") int idMesshall);
 
     @GET("messhall/report")
-    Call<ApiResponse<List<Report>>> reportMesshall(@Query("bulan")String bulan,
-                                                    @Query("user")String user);
+    Call<ApiResponse<List<Report>>> reportMesshall(@Query("id_messhal")int idMesshall,
+                                                   @Query("bulan")String bulan,
+                                                   @Query("user")String user);
 
 
     /** API FOR KANTIN **/
 
     @GET("kantin/overview")
     Call<ApiResponse<Overview>> getKantinOverview(@Query("id_akun")String id,
-                                                    @Query("bulan")String bulan);
+                                                  @Query("bulan")String bulan);
 
     @POST("kantin/transaction/magang")
-    Call<ApiResponse<Magang>> magangTransaction(@Query("nim") String nim);
+    Call<ApiResponse<Magang>> magangTransaction(@Query("nim") String nim,
+                                                @Query("id_messhall") int idMesshall);
 
     @POST("kantin/transaction/user")
-    Call<ApiResponse<User>> userTransaction(@Query("qrcode") String qrcode);
+    Call<ApiResponse<User>> userTransaction(@Query("qrcode") String qrcode,
+                                            @Query("id_messhall") int idMesshall);
 
     @POST("kantin/transaction/useradd")
     Call<ApiResponse<User>> userAddTransaction(@Query("qrcode") String qrcode,
+                                               @Query("id_messhall") int idMesshall,
                                                @Query("keterangan") String keterangan,
                                                @Query("mp") String mp);
 
     @GET("kantin/report")
-    Call<ApiResponse<List<Report>>> reportKantin(@Query("bulan")String bulan,
+    Call<ApiResponse<List<Report>>> reportKantin(@Query("id_messhal")int idMesshall,
+                                                 @Query("bulan")String bulan,
                                                  @Query("status")String status);
 
 }

@@ -2,14 +2,12 @@ package dev.sofie.messhalkantin.ui.menu;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 
 import dev.sofie.messhalkantin.R;
 import dev.sofie.messhalkantin.ui.pengaturan.PengaturanActivity;
@@ -18,11 +16,7 @@ import dev.sofie.messhalkantin.ui.transaction.MesshallTransactionActivity;
 
 
 public class MenuMesshallFragment extends Fragment implements View.OnClickListener {
-    public static final  String MESSHALL_SBM = "sbm";
-    public static final  String MESSHALL_MALLOMO = "mallomo";
-
-
-    private CardView transactionCard,reportCard,sbmCard,ubahPasswordCard;
+    private CardView transactionCard,reportCard,ubahPasswordCard;
     private Intent intent;
 
     public MenuMesshallFragment() {
@@ -44,9 +38,6 @@ public class MenuMesshallFragment extends Fragment implements View.OnClickListen
     }
 
     private  void initUI(View view){
-
-        sbmCard = view.findViewById(R.id.sbmCard);
-        sbmCard.setOnClickListener(this);
         reportCard = view.findViewById(R.id.reportCard);
         reportCard.setOnClickListener(this);
 
@@ -67,14 +58,9 @@ public class MenuMesshallFragment extends Fragment implements View.OnClickListen
                 break;
             case R.id.transactionCard:
                 intent = new Intent(getActivity(), MesshallTransactionActivity.class);
-                intent.putExtra(MesshallTransactionActivity.TRANSACTION_TYPE,MESSHALL_MALLOMO);
                 startActivity(intent);
                 break;
-            case R.id.sbmCard:
-                intent = new Intent(getActivity(), MesshallTransactionActivity.class);
-                intent.putExtra(MesshallTransactionActivity.TRANSACTION_TYPE,MESSHALL_SBM);
-                startActivity(intent);
-                break;
+
             case R.id.ubahPasswordCard:
                 intent = new Intent(getActivity(), PengaturanActivity.class);
                 startActivity(intent);

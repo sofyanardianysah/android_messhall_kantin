@@ -1,13 +1,12 @@
 package dev.sofie.messhalkantin.ui.pengaturan;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import dev.sofie.messhalkantin.R;
 import dev.sofie.messhalkantin.helper.SharedPreferecesHelper;
@@ -41,7 +40,7 @@ public class PengaturanActivity extends AppCompatActivity {
         (findViewById(R.id.button)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if(checkValidation()){
-                    repository.ubahPassword(sharedHelper.getUserID(),
+                    repository.ubahPassword(String.valueOf(sharedHelper.getUser().getId()),
                             mPassword.getText().toString(),
                             mPasswordBaru.getText().toString());
 
@@ -67,17 +66,17 @@ public class PengaturanActivity extends AppCompatActivity {
     public boolean checkValidation() {
 
         if (mPassword.getText().length() == 0) {
-            this.mPassword.setError("Silahkan Masukkan Password !");
+            mPassword.setError("Silahkan Masukkan Password !");
             return false;
         } else if (mPasswordBaru.getText().length() == 0) {
-            this.mPasswordBaru.setError("Silahkan Masukkan Password Baru !");
+            mPasswordBaru.setError("Silahkan Masukkan Password Baru !");
             return false;
         } else if (mRepeatPassword.getText().length() == 0) {
-            this.mRepeatPassword.setError("Silahkan Masukkan Ulangi Password !");
+            mRepeatPassword.setError("Silahkan Masukkan Ulangi Password !");
             return false;
         }  else if (mPasswordBaru.getText().length() != mRepeatPassword.getText().length() ) {
-            this.mPasswordBaru.setError("Password Baru dan Ulangin Password tidak sama !");
-            this.mRepeatPassword.setError("Password Baru dan Ulangin Password tidak sama !");
+            mPasswordBaru.setError("Password Baru dan Ulangin Password tidak sama !");
+            mRepeatPassword.setError("Password Baru dan Ulangin Password tidak sama !");
             return false;
         }else {
             return true;

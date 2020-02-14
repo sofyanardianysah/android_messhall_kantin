@@ -7,10 +7,8 @@ import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +22,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import dev.sofie.messhalkantin.R;
+import dev.sofie.messhalkantin.helper.SharedPreferecesHelper;
 import dev.sofie.messhalkantin.helper.UIHelper;
 import dev.sofie.messhalkantin.service.ApiRepository;
 
@@ -35,11 +34,10 @@ public class MesshallTransactionActivity extends AppCompatActivity implements Vi
     public static CardView statusCard,cardView;
     private Button frontCameraBtn,backCameraBtn,kembaliBtn,submit,tidak;
     public static TextView nama, nik,statusTxt;
-
     private static ProgressBar loading;
     private IntentIntegrator qrScan;
     private ApiRepository repository;
-    private String messhall;
+    private int messhall= 0;
     private static Context mContext;
     public String qrcode = "";
     private static final int PERMISSION_REQUEST = 100;
@@ -53,8 +51,6 @@ public class MesshallTransactionActivity extends AppCompatActivity implements Vi
         nama = findViewById(R.id.nama);
         nik = findViewById(R.id.nik);
         statusTxt = findViewById(R.id.statusTxt);
-
-
 
         submit = findViewById(R.id.submit);
         tidak = findViewById(R.id.no);
@@ -119,14 +115,12 @@ public class MesshallTransactionActivity extends AppCompatActivity implements Vi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction_messhall);
-        Intent intent  = getIntent();
-        messhall = intent.getStringExtra(TRANSACTION_TYPE);
         mContext = this;
         repository = ApiRepository.getInstance(this);
+        SharedPreferecesHelper helper = SharedPreferecesHelper.newInstance(this);
+        messhall =  helper.getUser().getIdMesshall();
         initUI();
     }
-
-
 
     private String userType(String nik){
             int length = nik.length();

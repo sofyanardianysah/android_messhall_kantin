@@ -2,7 +2,6 @@ package dev.sofie.messhalkantin.ui.transaction;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
@@ -17,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
@@ -27,9 +25,9 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import dev.sofie.messhalkantin.R;
+import dev.sofie.messhalkantin.helper.SharedPreferecesHelper;
 import dev.sofie.messhalkantin.helper.UIHelper;
 import dev.sofie.messhalkantin.service.ApiRepository;
-import dev.sofie.messhalkantin.ui.MainActivity;
 
 public class KantinTransactionActivity extends AppCompatActivity implements View.OnClickListener {
     public  static final String USER_INTERN = "intern";
@@ -44,6 +42,7 @@ public class KantinTransactionActivity extends AppCompatActivity implements View
     private ApiRepository repository;
     public  static String qrcode = "";
     private String keterangan = "";
+    private SharedPreferecesHelper sharedPreferecesHelper;
     private static Context mContext;
     private static final int PERMISSION_REQUEST = 100;
     private void initUI() {
@@ -138,6 +137,7 @@ public class KantinTransactionActivity extends AppCompatActivity implements View
         setContentView(R.layout.activity_transaction_kantin);
         mContext = this;
         repository = ApiRepository.getInstance(this);
+        sharedPreferecesHelper = SharedPreferecesHelper.newInstance(getApplicationContext());
         initUI();
 
     }
@@ -150,15 +150,16 @@ public class KantinTransactionActivity extends AppCompatActivity implements View
 
             } else {
                 String id = result.getContents();
+                int idMesshall = sharedPreferecesHelper.getUser().getIdMesshall();
                 showStatus(false,"Transaksi Dibatalkan !");
                 switch (userType(id)) {
                     case USER_EMPLOYEE:
                         qrcode = id;
-                        repository.userTransaction(id);
+                        repository.userTransaction(id,idMesshall);
                         clearTextView();
                         break;
                     case USER_INTERN:
-                        repository.magangTransaction(id);
+                        repository.magangTransaction(id,idMesshall);
                         break;
                     default:
                         showStatus(false,"Tipe User Tidak Ditemukan !");
@@ -197,7 +198,8 @@ public class KantinTransactionActivity extends AppCompatActivity implements View
                 if (mykasbon.length() == 0) {
                     mykasbon = "0";
                 }
-                repository.userAddTransaction(qrcode, keterangan, mykasbon);
+                int idMesshall = sharedPreferecesHelper.getUser().getIdMesshall();
+                repository.userAddTransaction(qrcode,idMesshall, keterangan, mykasbon);
                 break;
             case R.id.no:
                 clearTextView();

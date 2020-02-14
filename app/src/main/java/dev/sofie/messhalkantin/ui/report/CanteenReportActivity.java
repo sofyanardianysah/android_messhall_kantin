@@ -30,7 +30,6 @@ import dev.sofie.messhalkantin.helper.SharedPreferecesHelper;
 import dev.sofie.messhalkantin.helper.UIHelper;
 import dev.sofie.messhalkantin.model.Overview;
 import dev.sofie.messhalkantin.service.ApiRepository;
-import dev.sofie.messhalkantin.ui.MainActivity;
 
 import static dev.sofie.messhalkantin.helper.DateHelper.dateOnlyNow;
 
@@ -75,7 +74,7 @@ public class CanteenReportActivity extends AppCompatActivity implements View.OnC
         preferecesHelper = SharedPreferecesHelper.newInstance(this);
         repository = ApiRepository.getInstance(this);
         canteenReportVM = ViewModelProviders.of( this).get(CanteenReportVM.class);
-        canteenReportVM.getOverview(getApplicationContext(),preferecesHelper.getUserID(),dateOnlyNow()).observe(this,overviewObserver);
+        canteenReportVM.getOverview(getApplicationContext(), String.valueOf(preferecesHelper.getUser().getId()),dateOnlyNow()).observe(this,overviewObserver);
     }
 
     private void initUI(){
@@ -142,6 +141,7 @@ public class CanteenReportActivity extends AppCompatActivity implements View.OnC
         int mYear = c.get(Calendar.YEAR);
         int mMonth = c.get(Calendar.MONTH);
         int mDay = c.get(Calendar.DAY_OF_MONTH);
+        final int idMesshall = preferecesHelper.getUser().getIdMesshall();
         DatePickerDialog datePickerDialog = new DatePickerDialog(CanteenReportActivity.this, AlertDialog.THEME_HOLO_LIGHT,
                 new DatePickerDialog.OnDateSetListener() {
 
@@ -149,7 +149,7 @@ public class CanteenReportActivity extends AppCompatActivity implements View.OnC
                     public void onDateSet(DatePicker view, int year,
                                           int monthOfYear, int dayOfMonth) {
                         tanggal[0] = year +"-"+ (monthOfYear + 1) + "-" + 1 ;
-                        repository.kantinReport(tanggal[0],status);
+                        repository.kantinReport(idMesshall,tanggal[0],status);
                     }
                 }, mYear, mMonth, mDay);
         (datePickerDialog.getDatePicker()).findViewById(Resources.getSystem().getIdentifier("day", "id", "android")).setVisibility(View.GONE);
@@ -191,11 +191,8 @@ public class CanteenReportActivity extends AppCompatActivity implements View.OnC
         switch (requestCode){
             case PERMISSION_REQUEST:{
                 // When request is cancelled, the results array are empty
-                if(
-                        (grantResults.length >0) && (grantResults[0]  == PackageManager.PERMISSION_GRANTED)
-                ){
+                if((grantResults.length >0) && (grantResults[0]  == PackageManager.PERMISSION_GRANTED)){
                     spinnerDatePickerMonthYear();
-
                     // Permissions are granted
                     Toast.makeText(CanteenReportActivity.this,"Akses diperbolehkan.",Toast.LENGTH_SHORT).show();
                 }else {

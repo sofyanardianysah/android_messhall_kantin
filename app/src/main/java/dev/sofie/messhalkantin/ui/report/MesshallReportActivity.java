@@ -53,7 +53,7 @@ public class MesshallReportActivity extends AppCompatActivity implements View.On
         repository = ApiRepository.getInstance(this);
         preferecesHelper = SharedPreferecesHelper.newInstance(this);
         messhallReportVM = ViewModelProviders.of( this).get(MesshallReportVM.class);
-        messhallReportVM.getOverview(getApplicationContext(),preferecesHelper.getUserID(),dateOnlyNow()).observe(this,overviewObserver);
+        messhallReportVM.getOverview(getApplicationContext(), String.valueOf(preferecesHelper.getUser().getId()),dateOnlyNow()).observe(this,overviewObserver);
 
     }
 
@@ -126,6 +126,7 @@ public class MesshallReportActivity extends AppCompatActivity implements View.On
         int mYear = c.get(Calendar.YEAR);
         int mMonth = c.get(Calendar.MONTH);
         int mDay = c.get(Calendar.DAY_OF_MONTH);
+        final int idMesshall = preferecesHelper.getUser().getIdMesshall();
         DatePickerDialog datePickerDialog = new DatePickerDialog(MesshallReportActivity.this, AlertDialog.THEME_HOLO_LIGHT,
                 new DatePickerDialog.OnDateSetListener() {
 
@@ -133,7 +134,7 @@ public class MesshallReportActivity extends AppCompatActivity implements View.On
                     public void onDateSet(DatePicker view, int year,
                                           int monthOfYear, int dayOfMonth) {
                         tanggal[0] = year +"-"+ (monthOfYear + 1) + "-" + 1 ;
-                        repository.messhallReport(tanggal[0],user);
+                        repository.messhallReport(idMesshall,tanggal[0],user);
 
                     }
                 }, mYear, mMonth, mDay);

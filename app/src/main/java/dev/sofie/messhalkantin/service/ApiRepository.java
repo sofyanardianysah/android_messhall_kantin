@@ -108,9 +108,9 @@ public class ApiRepository {
      * Report
      **/
 
-    public void kantinReport(String bulan, final String status) {
+    public void kantinReport(int idMesshall,String bulan, final String status) {
         CanteenReportActivity.isLoading(true);
-        api.reportKantin(bulan, status).enqueue(new Callback<ApiResponse<List<Report>>>() {
+        api.reportKantin(idMesshall,bulan, status).enqueue(new Callback<ApiResponse<List<Report>>>() {
             public void onResponse(Call<ApiResponse<List<Report>>> call, Response<ApiResponse<List<Report>>> response) {
                 CanteenReportActivity.isLoading(false);
                 if (response.isSuccessful()) {
@@ -138,9 +138,9 @@ public class ApiRepository {
         });
     }
 
-    public void messhallReport(final String bulan, final String user) {
+    public void messhallReport(int idMesshall,final String bulan, final String user) {
         MesshallReportActivity.isLoading(true);
-        api.reportMesshall(bulan, user).enqueue(new Callback<ApiResponse<List<Report>>>() {
+        api.reportMesshall(idMesshall,bulan, user).enqueue(new Callback<ApiResponse<List<Report>>>() {
             public void onResponse(Call<ApiResponse<List<Report>>> call, Response<ApiResponse<List<Report>>> response) {
                 MesshallReportActivity.isLoading(false);
                 if (response.isSuccessful()) {
@@ -174,7 +174,7 @@ public class ApiRepository {
      * Transaction
      **/
 
-    public void guestTransaction(String nit, String messhall) {
+    public void guestTransaction(String nit, int messhall) {
         MesshallTransactionActivity.isLoading(true);
         api.guestTransaction(nit, messhall).enqueue(new Callback<ApiResponse<Guest>>() {
             public void onResponse(Call<ApiResponse<Guest>> call, Response<ApiResponse<Guest>> response) {
@@ -198,7 +198,7 @@ public class ApiRepository {
         });
     }
 
-    public void userTransactionMesshall(String qrcode, String messhall) {
+    public void userTransactionMesshall(String qrcode, int messhall) {
         MesshallTransactionActivity.isLoading(true);
         api.userTransactionMesshall(qrcode, messhall).enqueue(new Callback<ApiResponse<User>>() {
             public void onResponse(Call<ApiResponse<User>> call, Response<ApiResponse<User>> response) {
@@ -232,7 +232,7 @@ public class ApiRepository {
 
     }
 
-    public void extraTransactionMesshall(String qrcode, String messhall) {
+    public void extraTransactionMesshall(String qrcode, int messhall) {
         MesshallTransactionActivity.isLoading(true);
         api.extraTransaction(qrcode, messhall).enqueue(new Callback<ApiResponse<User>>() {
             public void onResponse(Call<ApiResponse<User>> call, Response<ApiResponse<User>> response) {
@@ -266,10 +266,9 @@ public class ApiRepository {
 
     }
 
-    public void magangTransaction(String nim) {
-
+    public void magangTransaction(String nim, int idMesshall) {
         KantinTransactionActivity.isLoading(true);
-        api.magangTransaction(nim).enqueue(new Callback<ApiResponse<Magang>>() {
+        api.magangTransaction(nim,idMesshall).enqueue(new Callback<ApiResponse<Magang>>() {
             public void onResponse(Call<ApiResponse<Magang>> call, Response<ApiResponse<Magang>> response) {
                 KantinTransactionActivity.isLoading(false);
 
@@ -292,9 +291,9 @@ public class ApiRepository {
 
     }
 
-    public void userTransaction(String qrcode) {
+    public void userTransaction(String qrcode,int idMesshall) {
         KantinTransactionActivity.isLoading(true);
-        api.userTransaction(qrcode).enqueue(new Callback<ApiResponse<User>>() {
+        api.userTransaction(qrcode,idMesshall).enqueue(new Callback<ApiResponse<User>>() {
             public void onResponse(Call<ApiResponse<User>> call, Response<ApiResponse<User>> response) {
                 KantinTransactionActivity.isLoading(false);
 
@@ -320,9 +319,9 @@ public class ApiRepository {
 
     }
 
-    public void userAddTransaction(String qrcode, String keterangan, String mp) {
+    public void userAddTransaction(String qrcode,int idMesshall, String keterangan, String mp) {
         KantinTransactionActivity.isLoading(true);
-        api.userAddTransaction(qrcode, keterangan, mp).enqueue(new Callback<ApiResponse<User>>() {
+        api.userAddTransaction(qrcode,idMesshall, keterangan, mp).enqueue(new Callback<ApiResponse<User>>() {
             public void onResponse(Call<ApiResponse<User>> call, Response<ApiResponse<User>> response) {
                 KantinTransactionActivity.isLoading(false);
                 if (response.isSuccessful()) {
