@@ -139,6 +139,7 @@ public class ApiRepository {
     }
 
     public void messhallReport(int idMesshall,final String bulan, final String user) {
+        Log.e("id_messhall", String.valueOf(idMesshall));
         MesshallReportActivity.isLoading(true);
         api.reportMesshall(idMesshall,bulan, user).enqueue(new Callback<ApiResponse<List<Report>>>() {
             public void onResponse(Call<ApiResponse<List<Report>>> call, Response<ApiResponse<List<Report>>> response) {

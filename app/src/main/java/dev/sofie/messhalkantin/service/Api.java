@@ -45,7 +45,7 @@ public interface Api {
                                              @Query("id_messhall") int idMesshall);
 
     @GET("messhall/report")
-    Call<ApiResponse<List<Report>>> reportMesshall(@Query("id_messhal")int idMesshall,
+    Call<ApiResponse<List<Report>>> reportMesshall(@Query("id_messhall")int idMesshall,
                                                    @Query("bulan")String bulan,
                                                    @Query("user")String user);
 
@@ -71,7 +71,7 @@ public interface Api {
                                                @Query("mp") String mp);
 
     @GET("kantin/report")
-    Call<ApiResponse<List<Report>>> reportKantin(@Query("id_messhal")int idMesshall,
+    Call<ApiResponse<List<Report>>> reportKantin(@Query("id_messhall")int idMesshall,
                                                  @Query("bulan")String bulan,
                                                  @Query("status")String status);
 
