@@ -29,7 +29,7 @@ public interface Api {
     /** API FOR MESSHALL **/
 
     @GET("messhall/overview")
-    Call<ApiResponse<Overview>> getOverviewMesshall(@Query("id_akun")String id,
+    Call<ApiResponse<Overview>> getOverviewMesshall(@Query("id_messhall")String id,
                                                     @Query("bulan")String bulan);
 
     @POST("messhall/transaction/guest")
@@ -53,7 +53,7 @@ public interface Api {
     /** API FOR KANTIN **/
 
     @GET("kantin/overview")
-    Call<ApiResponse<Overview>> getKantinOverview(@Query("id_akun")String id,
+    Call<ApiResponse<Overview>> getKantinOverview(@Query("id_messhall")String id,
                                                   @Query("bulan")String bulan);
 
     @POST("kantin/transaction/magang")

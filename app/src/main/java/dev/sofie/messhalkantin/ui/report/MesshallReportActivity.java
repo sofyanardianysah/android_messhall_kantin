@@ -53,7 +53,7 @@ public class MesshallReportActivity extends AppCompatActivity implements View.On
         repository = ApiRepository.getInstance(this);
         preferecesHelper = SharedPreferecesHelper.newInstance(this);
         messhallReportVM = ViewModelProviders.of( this).get(MesshallReportVM.class);
-        messhallReportVM.getOverview(getApplicationContext(), String.valueOf(preferecesHelper.getUser().getId()),dateOnlyNow()).observe(this,overviewObserver);
+        messhallReportVM.getOverview(getApplicationContext(), String.valueOf(preferecesHelper.getUser().getIdMesshall()),dateOnlyNow()).observe(this,overviewObserver);
 
     }
 

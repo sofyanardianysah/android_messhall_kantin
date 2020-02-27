@@ -74,7 +74,7 @@ public class CanteenReportActivity extends AppCompatActivity implements View.OnC
         preferecesHelper = SharedPreferecesHelper.newInstance(this);
         repository = ApiRepository.getInstance(this);
         canteenReportVM = ViewModelProviders.of( this).get(CanteenReportVM.class);
-        canteenReportVM.getOverview(getApplicationContext(), String.valueOf(preferecesHelper.getUser().getId()),dateOnlyNow()).observe(this,overviewObserver);
+        canteenReportVM.getOverview(getApplicationContext(), String.valueOf(preferecesHelper.getUser().getIdMesshall()),dateOnlyNow()).observe(this,overviewObserver);
     }
 
     private void initUI(){

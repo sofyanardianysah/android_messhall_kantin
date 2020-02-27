@@ -10,7 +10,7 @@ public class SharedPreferecesHelper {
     public Context mContext;
     public static String userPreferences = "user";
     public static String userIDPref = "id";
-    public static String messhallIDPref = "id";
+    public static String messhallIDPref = "id_messhall";
     public static String namaPref = "nama";
     public static String nikPref = "nik";
     public static String rolePref = "role";

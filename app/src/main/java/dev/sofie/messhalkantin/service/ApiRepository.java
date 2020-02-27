@@ -133,6 +133,7 @@ public class ApiRepository {
 
             public void onFailure(Call<ApiResponse<List<Report>>> call, Throwable t) {
                 CanteenReportActivity.isLoading(false);
+                Log.e("test", t.getMessage());
                 Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
             }
         });
@@ -194,6 +195,7 @@ public class ApiRepository {
 
             public void onFailure(Call<ApiResponse<Guest>> call, Throwable t) {
                 MesshallTransactionActivity.isLoading(false);
+                Log.e("failure",t.getMessage());
                 Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
             }
         });
@@ -227,6 +229,7 @@ public class ApiRepository {
 
             public void onFailure(Call<ApiResponse<User>> call, Throwable t) {
                 MesshallTransactionActivity.isLoading(false);
+                Log.e("failure",t.getMessage());
                 Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
             }
         });
@@ -261,6 +264,7 @@ public class ApiRepository {
 
             public void onFailure(Call<ApiResponse<User>> call, Throwable t) {
                 MesshallTransactionActivity.isLoading(false);
+                Log.e("failure",t.getMessage());
                 Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
             }
         });
@@ -286,6 +290,7 @@ public class ApiRepository {
 
             public void onFailure(Call<ApiResponse<Magang>> call, Throwable t) {
                 KantinTransactionActivity.isLoading(false);
+                Log.e("failure",t.getMessage());
                 Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
             }
         });
@@ -314,6 +319,7 @@ public class ApiRepository {
 
             public void onFailure(Call<ApiResponse<User>> call, Throwable t) {
                 KantinTransactionActivity.isLoading(false);
+                Log.e("failure",t.getMessage());
                 Toast.makeText(context, "Internal Server Error !", Toast.LENGTH_SHORT).show();
             }
         });
@@ -377,7 +383,7 @@ public class ApiRepository {
     }
 
     public MutableLiveData<Overview> getKantinOverview(String id, String bulan) {
-
+        Log.e("idanu",id);
         CanteenReportActivity.isLoading(true);
         final MutableLiveData<Overview> result = new MutableLiveData<>();
         api.getKantinOverview(id, bulan).enqueue(new Callback<ApiResponse<Overview>>() {
