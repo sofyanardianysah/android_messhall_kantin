@@ -2,7 +2,6 @@ package dev.sofie.messhalkantin.helper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 public class DateHelper {
@@ -32,7 +31,7 @@ public class DateHelper {
     }
 
     public static String dateOnlyNow(){
-        return new SimpleDateFormat("d MMM Y").format(new Date());
+        return new SimpleDateFormat("d MMM yyyy").format(new Date());
     }
 
 

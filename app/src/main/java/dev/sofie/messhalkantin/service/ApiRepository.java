@@ -33,7 +33,7 @@ import retrofit2.Retrofit.Builder;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiRepository {
-    private static final String BASE_URL = "http://messhall.dibagus.com/api/v1/";
+    private static final String BASE_URL = "https://messhall.bosowasemen.com/api/v1/";
     private static ApiRepository repository;
     private Api api;
     private Context context;
